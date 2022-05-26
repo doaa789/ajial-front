@@ -1,0 +1,25 @@
+{
+    "operations":[
+        {
+            "Id":1,
+            "expression":"45 % 9 =",
+            "result":"5"
+           },
+        {
+            "Id":2,
+            "expression":"4 + 13 =",
+            "result":"17"
+           },
+        {
+            "Id":3,
+            "expression":"8 * 7 =",
+            "result":"56"
+           },
+        {
+            "Id":4,
+            "expression":"32 - 6 =",
+            "result":"26"
+           }
+          
+          ]
+}

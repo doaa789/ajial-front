@@ -1,0 +1,36 @@
+{
+    "books":[
+        {
+            "Id":1,
+            "name":"قصص تعتز بها",
+            "image":"fox.jpg",
+            "description":"أسلوب بسيط طفولي ومشوق ",
+            "url":"https://www.jarir.com/jarir-publication-478136.html"
+           },
+        {
+            "Id":2,
+            "name":"امير المياه",
+            "image":"water.png",
+            "description":" يحوي حكايات ممتعة تحمل الفائدة  "
+           },
+        {
+            "Id":3,
+            "name":"ابنة السلطان",
+            "image":"son1.jpg",
+            "description":" يحوي حكايات تحمل الفائدة والاثارة "
+           },
+        {
+            "Id":4,
+            "name":"قصص للبنات",
+            "image":"girl.jpg",
+            "description":" يحوي حكايات تحمل الاثارة بأسلوب"
+           },
+           {
+            "Id":5,
+            "name":"قصص الاطفال",
+            "image":"duck1.jpg",
+            "description":" يحوي حكايات ممتعة تحمل الفائدة "
+           }
+          
+          ]
+}
