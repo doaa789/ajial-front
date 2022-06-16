@@ -5,13 +5,18 @@
     <p class="title">مرحبا بك مجددا</p>
     
     <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
-      <input id="user-name" name="user-name" placeholder="اسم المستخدم" type="text" v-model.trim="userName" @blur="validateName"/>
+      <input id="user-name" name="user-name" placeholder="اسم المستخدم" type="text" v-model.trim="email" @blur="validateName"/>
       <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة الاسم</p>
     </div>
     <div class="form-control" :class="{invalid:userPassValidity==='invalid'}">
       <input id="password" name="password" placeholder="كلمة المرور" type="password" v-model.trim="password" @blur="validatePassword"/>
       <p v-if="userPassValidity==='invalid'" class="validate">الرجاء التأكد من صحة كلمة المرور</p>
     </div>
+
+      <div class="alert alert-success" v-if="isSuccess">تم تسجيل الدخول بنجاح</div>
+  <div class="alert alert-success" v-if="loading">الرجاء الانتظار قليلا.....</div>
+
+
     <div>
       <base-button class="btn" @click="logIn">تسجيل الدخول</base-button>
     </div>
@@ -24,35 +29,50 @@
 </template>
 
 <script>
-import baseDialog from '../ui/BaseDialog.vue'
+import baseDialog from '../ui/BaseDialog.vue';
+import axios from "axios";
+
 export default {
   components:{
     baseDialog
   },
   data(){
         return{
-        userName:'',
-        password:'',
+
         userNameValidity:'pending',
         userPassValidity:'pending',
-        dialogClose:true
+        dialogClose:true,
+
+              loading: false,
+      email:'',
+      password:'',
+      isSuccess:false
         };
     },
      methods:{
         logUp(){
                this.$router.push('/signup')
 
-            }, 
-         logIn(){
+            },
+
+        logIn(){
+    this.loading= true,
+    axios.post('https://glacial-garden-81387.herokuapp.com/api/v1/login', {
+    email: this.email,
+    password: this.password,
+    })
+      .then((response) => {
+        this.isSuccess=true;
+        this.loading= false,
+        console.log(response);})
+      .catch(error => console.log(error))
+      .finally(() => this.loading = false)
            this.$store.commit('change');
-           console.log('Username: ' +this.userName);
-              this.userName='';
-           console.log('password: ' +this.password);
-              this.password='';
            this.dialogClose=false;
-           
-        },      
-        validateName(){
+      
+  }, 
+
+       validateName(){
           if (this.userName ===''){
             this.userNameValidity='invalid';
           }

@@ -13,7 +13,7 @@
       <img src="/images/course2.png" style="height:70%;margin-top:-4rem">
 
       <div v-if="slider==1" class="slider">
-          <img src="/images/safe2.gif" alt="safe">
+          <img src="/images/safe7.gif" alt="safe">
         <div class="safe">
           <h2>لا قلق بعداليوم</h2>
           <p class="safe-p">تقدم منصة أجيال للجيل اليافع<br> حزمة تعليمية ترفيهية آمنة</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div v-if="slider==2" class="slider">
-          <img src="/images/social3.gif" alt="social">
+          <img src="/images/like7.gif" alt="social">
         <div class="safe">
           <h2>تجربة اجتماعية هادفة</h2>
           <p class="safe-p">مع منصة أجيال يمكنك الاستمتاع بمزايا<br> منصات التواصل الاجتماعي من خلال<br>المتحتوى الهادف الذي نقدمه</p>
@@ -29,7 +29,7 @@
       </div>
 
       <div v-if="slider==3" class="slider">
-          <img src="/images/safe2.gif" alt="safe">
+          <img src="/images/safe7.gif" alt="safe">
         <div class="safe">
           <h2>العلامة المميزة</h2>
           <p class="safe-p">اقرأ وتعلم أكثر لتحصل على العلامة المميزة <br>على حسابك الشخصي</p>
@@ -43,6 +43,8 @@
       </div>
       
    </div>
+   
+  
 
    <div class="new-courses">
       <h2 class="title-course">أحدث الكورسات </h2>
@@ -64,78 +66,69 @@
           </div>
       </div>
    </div>
-  
-       <h2 class="title-div">شهادات نعتز بها </h2>
-      
-      <div class="testimonials">
-        <div class="row">
 
-        <div class="testimonials-div">
+   <div class="member" style="direction:rtl;display: grid;">
+      <h2 style="margin-right: 37%;margin-bottom: 5%;margin-top: 5%;font-size: 30px;color:rgb(95,110,189);margin-left:37%;padding-right:3%;">لوحة طلابنا المتميزين </h2>
+      <div style="display:flex;padding-right:11%;">
+      <div style="padding-left:5%;">
+      <div style="display:flex;padding-left:36%;margin-top: -5%;">
+        <img class="circle" src="/images/member6.jpg" style="background-color:darkgrey">
+        <img class="circle" src="/images/member7.jpg">
+        <img class="circle" src="/images/member.jpg" style="background-color:lightsalmon">
 
-          <img class="avatar" src="/images/avatar7.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>شادي القاري</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        <div class="testimonials-div">
-
-          <img class="avatar" src="/images/avatar8.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>خلود اللحام</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        <div class="testimonials-div">
-
-          <img class="avatar" src="/images/avatar5.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>أحمد الطبل</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        </div>
-
-        <div class="row">
-
-        <div class="testimonials-div">
-
-          <img class="avatar" src="/images/avatar9.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>شادي القاري</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        <div class="testimonials-div">
-
-          <img class="avatar" src="/images/avatar3.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>خالد عكاشة</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        <div class="testimonials-div">
-
-          <img class="avatar" src="/images/avatar4.png"  alt="">
-          <div class="testimonials-div-text">
-          <h4>أحمد الطبل</h4>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
-
-        </div>
       </div>
+      <div style="display:flex;padding-left:40%;padding-top:2%;color:rgb(95,110,189);">
+          <div class="member-paragraph" style="margin-right: 19%;">اسماء العابد<br>المرتبة الأولى</div>
+          <div class="member-paragraph" style="margin-right: 13%;">حسني الأشقر<br>المرتبة الثانية</div>
+          <div class="member-paragraph" style="margin-right: 21%;">نور الحموي<br>المرتبة الثالثة</div>
+
+      </div>
+
+        <div style="display:flex;padding-bottom:9%;padding-left:55%">
+      <img style="max-width:135px;max-height:130px; margin-right: 12%;margin-top: 1%;" src="/images/trophy1.png" alt="">
+      <img style="max-width:145px;max-height:145px; margin-right: 21%; margin-top: 1%;" src="/images/trophy3.png" alt="">
+      <img style="max-width:145px;max-height:145px; margin-right: 21%;" src="/images/trophy5.png" alt="">
+      </div>
+      </div>
+      <div style="width:40%;">
+          <h2 style="margin-right:30%;margin-left:25%;padding-right:6%;color:rgb(95,110,189);border: 5px solid rgb(215,195,204);
+          border-radius:15px;background-color: rgb(215,195,204);">قسم الكورسات</h2>
+          <img src="/images/top1.png" style="height:32rem;margin-top: -25%;">
+      </div>
+      
+      </div>
+
+      <div style="display:flex;margin-right: 5%;">
+      <div style="width:40%;">
+          <h2 style="margin-right:30%;margin-left:25%;padding-right:11%;color:rgb(95,110,189);border: 5px solid rgb(215,195,204);
+          border-radius:15px;background-color: rgb(215,195,204);">قسم الكتب</h2>
+          <img src="/images/top1.png" style="height:32rem;margin-top: -25%;">
+      </div>
+      <div>
+      <div style="display:flex;padding-left:46%;margin-top: -5%;">
+        <img class="circle" src="/images/avatar.png" style="background-color:darkgrey">
+        <img class="circle" src="/images/member5.jpg">
+        <img class="circle" src="/images/avatar6.png" style="background-color:lightsalmon">
+
+      </div>
+      <div style="display:flex;padding-left:20%;padding-top:2%;color:rgb(95,110,189);">
+          <div class="member-paragraph" style="margin-right: 12%;">حسناء العابد<br>المرتبة الأولى</div>
+          <div class="member-paragraph" style="margin-right: 3%;">حمدية الأشقر<br>المرتبة الثانية</div>
+          <div class="member-paragraph" style="margin-right: 3%;">نور الحموي<br>المرتبة الثالثة</div>
+
+      </div>
+
+        <div style="display:flex;padding-bottom:9%;padding-left:55%">
+      <img style="max-width:135px;max-height:130px; margin-right: 12%;margin-top: 1%;" src="/images/trophy1.png" alt="">
+      <img style="max-width:145px;max-height:145px; margin-right: 21%; margin-top: 1%;" src="/images/trophy3.png" alt="">
+      <img style="max-width:145px;max-height:145px; margin-right: 21%;" src="/images/trophy5.png" alt="">
+      </div>
+      </div>
+      </div>
+  </div>
+
+  
+       
         <h2 class="title-book">أحدث الكتب</h2>
     <div class="full-new-book">
       <div class="new-book">
@@ -163,6 +156,135 @@
       <button class="go-book" @click="library">عرض الكل</button>
 
     </div>
+
+    <h2 class="title-div">شهادات نعتز بها </h2>
+      
+      <div class="testimonials">
+        <div class="row">
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar7.png"  alt="">
+          <div class="testimonials-div-text">
+            <div style="display:flex">
+                <h4 style="margin-bottom:0%">ماهر السعدي</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star" ></span>
+                    <span class="fa fa-star"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar8.png"  alt="">
+          <div class="testimonials-div-text">
+            <div style="display:flex">
+                <h4 style="margin-bottom:0%">خلود اللحام</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked" ></span>
+                    <span class="fa fa-star"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar5.png"  alt="">
+          <div class="testimonials-div-text">
+          <div style="display:flex">
+                <h4 style="margin-bottom:0%">سمير الحمصي</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star" ></span>
+                    <span class="fa fa-star"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar9.png"  alt="">
+          <div class="testimonials-div-text">
+            <div style="display:flex">
+                <h4 style="margin-bottom:0%">شادي القاري</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star" ></span>
+                    <span class="fa fa-star"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar3.png"  alt="">
+          <div class="testimonials-div-text">
+          <div style="display:flex">
+                <h4 style="margin-bottom:0%">خالد الرازي</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star" ></span>
+                    <span class="fa fa-star"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+        <div class="testimonials-div">
+
+          <img class="avatar" src="/images/avatar4.png"  alt="">
+          <div class="testimonials-div-text">
+            <div style="display:flex">
+                <h4 style="margin-bottom:0%">أحمد الطبل</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked" ></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+          </div>
+          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          </div>
+
+        </div>
+
+
+        </div>
+      </div>
+
+
       <div class="contact-us">
         <div class="up">
             <h2 class="title-contact">تواصل معنا</h2>
@@ -176,6 +298,7 @@
             <button class="send">ارسال</button>
         </div>
       </div>
+
       <footer>
         <div class="footer-div">
           <img src="/images/footer.png" alt="ajial" style="margin-top:5%; width:130px;height:130px;">
@@ -256,6 +379,9 @@ body {
   height: 100rem;
   background-color: #7d52a0;
 }
+.checked {
+  color: orange;
+}
 section.top{
   height: 50rem;
   background-image: url("./assets/3.png"),
@@ -277,11 +403,12 @@ section.top{
 }
 .features{
   margin-top: 9%;
-  background-color: #fa1810;
+  background-color: rgb(220, 64, 58);
   height: 43rem;
 }
 .title-feature{
-  background: #fa1810;
+  font-size: 30px;
+  background:rgb(220, 64, 58);
  padding-top: 4rem;
  padding-bottom: 4rem;
   padding-left: 40%;
@@ -290,7 +417,7 @@ section.top{
   color: #fff;
 }
 .title-div{
-  background: rgb(235, 231, 14);
+  background: rgb(121, 131, 208);
  padding-top: 4rem;
  padding-bottom: 4rem;
   margin-bottom: -5%;
@@ -298,7 +425,7 @@ section.top{
   color: #fff;
 }
 .title-book{
-  background:#25dab3;
+  background:rgb(19, 198, 191);
  padding-top: 4rem;
  padding-bottom: 4rem;
   margin-bottom: -5%;
@@ -361,9 +488,9 @@ section.top{
   background-color: #ffffff;
 }
 .send{
-  border: 2px solid #b11797;
+  border: 2px solid rgb(175,58, 164);
   margin: auto;
-  color: #b11797;
+  color: rgb(175,58, 164);
   font-size: 20px;
   min-width: 95px;
   font-weight: bold;
@@ -371,18 +498,18 @@ section.top{
 }
 .send:hover{
   border: 2px solid #fff;
-  background: #b11797;
+  background: rgb(175,58, 164);
   color: #fff;
 }
 .go-course{
-  border: 2px solid rgb(235, 103, 26);
+  border: 2px solid rgb(225, 97, 37);
   border: 2px solid #fff;
-  background-color: rgb(235, 103, 26);
+  background-color: rgb(225, 97, 37);
   font-size: 17px;
   padding:2%;
 }
 .go-book{
-  background-color: #25dab3;
+  background-color: rgb(19, 198, 191);
   border: 2px solid #fff;
   position:absolute;
   top: 65%;
@@ -403,12 +530,12 @@ section.top{
   background: #fff;
 }
 .go-course:hover{
-  border: 2px solid rgb(235, 103, 26);
-  color: rgb(235, 103, 26);
+  border: 2px solid rgb(225, 97, 37);
+  color: rgb(225, 97, 37);
 }
 .go-book:hover{
-  border: 2px solid #25dab3;
-  color: #25dab3;
+  border: 2px solid rgb(19, 198, 191);
+  color: rgb(19, 198, 191);
 }
 
 .arrow,.slider,.social{
@@ -447,20 +574,20 @@ footer img{
 }
 .avatar{
     height: 75px;
-    width: 65px;
+    width: 75px;
     border-radius: 50%;
     margin-bottom: -25%;
-    margin-right: 75%;
-    background-color: rgb(235, 231, 14);
+    margin-right: 72%;
+    background-color: rgb(121, 131, 208);
 }
 .testimonials h4{
   margin-top: 0;
-   color: rgb(207, 204, 12);
+   color: rgb(121, 131, 208);
    font-size: 17px;
 }
 .testimonials{
-  background-color: rgb(235, 231, 14);
- color: rgb(207, 204, 12);
+  background-color: rgb(121, 131, 208);
+ color: rgb(121, 131, 208);
   height: 40rem;
   padding-left: 14%;
   padding-right: 9%;
@@ -483,6 +610,7 @@ footer img{
   width: 32%;
   direction: rtl;
 }
+
 .testimonials-div-text{
   background: rgb(255, 255, 255);
   padding: 3% 3.5% 2% 2.5%;
@@ -491,7 +619,7 @@ footer img{
   font-size: 14px;
 }
 .contact-us{
-  border-top:41px solid #b11797;
+  border-top:41px solid rgb(175,58, 164);
   height: 34.5rem;
   direction: rtl;
 }
@@ -499,7 +627,7 @@ footer img{
   padding:0% 0% 22% 2%;
   background-color: #fff;
   height: 100%;
-  color: #b11797;
+  color: rgb(175,58, 164);
   display: grid;
 }
 .div-contact-input{
@@ -529,15 +657,15 @@ footer img{
   margin-bottom: -15%;
 	border-left: 700px solid transparent;
 	border-right: 700px solid transparent;
-	border-bottom: 350px solid #b11797;
+	border-bottom: 350px solid rgb(175,58, 164);
 }
 
 footer{
-  background-color:#783fa7;
+  background-color:#7d52a0;
   display: flex;
   direction: rtl;
   color: #fff;
-  border-bottom:600px solid #783fa7;
+  border-bottom:60px solid #7d52a0;
 }
 .footer-div{
   width: 17%;
@@ -563,7 +691,7 @@ footer{
   height: 20px;
   width: 20px;
   margin:2rem 0.25rem 19rem;
-  background-color: #fa1810;
+  background-color: rgb(220, 64, 58);
   border: 1px solid #fff;
   border-radius: 50%;
   display: inline-block;
@@ -580,7 +708,7 @@ footer{
 .new-courses{
   height: 48rem;
   padding:5% 10% 5% 10%;
-  background-color: rgba(235, 103, 26, 0.993);
+  background-color: rgb(225, 97, 37);
   color: #fff;
 }
 .new-courses h3{
@@ -608,7 +736,7 @@ footer{
 }
 .full-new-book{
   height: 40rem;
-  background:#25dab3;
+  background:rgb(19, 198, 191);
   display: grid;
   position: relative;
 
@@ -699,13 +827,13 @@ footer{
   margin: 0;
 }
 .new-text h5{
-  color: #25dab3;
+  color: rgb(19, 198, 191);
   margin: 0;
 }
 .new-btn {
   color: #fff;
   border: 1px solid #fff;
-  background-color: #25dab3;
+  background-color: rgb(19, 198, 191);
   border-radius: 5px;
   border:none;
   padding: 2px 15px;
@@ -714,8 +842,28 @@ footer{
   font-weight:bold;
 }
 .new-btn:hover {
-  color: #25dab3;
-  border: 1px solid #25dab3;
+  color: rgb(19, 198, 191);
+  border: 1px solid rgb(19, 198, 191);
   background-color: #fff;
+}
+
+.member{
+  display: grid;
+  background-color: rgb(244, 210, 65);
+  color: #fff;
+}
+.circle {
+  height: 150px;
+  width: 150px;
+  margin-top:8%;
+  margin-right:11%;
+  border-radius: 50%;
+
+}
+.member-paragraph{
+  margin-left: 4%;
+  margin-right: 7%;
+  min-width: 45%;
+  font-size: 18px;
 }
 </style>

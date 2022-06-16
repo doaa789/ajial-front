@@ -33,6 +33,29 @@
             <div class="container-video">
                 <video v-if="session===0" src="/images/computer.mp4" controls width="550"></video>
                 <video v-else src="/images/session1.mp4" controls width="550"></video>
+
+                     <div class="course-progress">
+                     <img v-if="session==='5'" style="margin-top: -16px;width: 80px;height: 50px;margin-right: -12%;" src="/images/backwin.gif" alt="">                                          
+                     <div :class="{videoCircle:true,fullCircle:session>=0}"></div>
+                     <div class="dash"></div>
+                     <div :class="{videoCircle:true,fullCircle:session>='1'}"></div>
+                     <div class="dash"></div>
+                     <div :class="{videoCircle:true,fullCircle:session>='2'}"></div>
+                     <div class="dash"></div>
+                     <div :class="{videoCircle:true,fullCircle:session>='3'}"></div>
+                     <div class="dash"></div>
+                     <div :class="{videoCircle:true,fullCircle:session>='4'}"></div>
+                     <div class="dash"></div>
+                     <div :class="{videoCircle:true,fullCircle:session>='5'}"></div>
+                     <div v-if="session==='5'" class="dash"></div>
+                     <div v-if="session==='5'" style="display:flex;">
+                        <img style="margin-top: -6px;width: 40px;height: 40px;background-color: #25da75;
+                          border-radius:50%;border:3px solid rgb(39, 39, 39);" src="/images/check.png" alt="">                                          
+                        <img style="margin-top: -16px;width: 70px;height: 70px;" src="/images/reward1.png" alt="">                                          
+                        <img  style="margin-top: -16px;width: 80px;height: 50px;" src="/images/backwin.gif" alt="">                                          
+                     </div>
+                     </div>
+
                 <ul class="list-session">
 
                         <li class="active">
@@ -41,12 +64,12 @@
                           <img  class="lock" src="/images/open-lock.png" alt="lock">
                         </li>
 
-                         <li :class="{clickSession:true,active:session==='1'}" @click="this.question='true'">
+                         <li :class="{clickSession:true,active:session==='1'}" @click="this.question='1'">
                            <img  class="video" src="/images/video1.png" alt="video">
                              الدرس الاول: تثبيت برنامج سكراتش
                            <img v-if="session===0" class="lock" src="/images/close-lock.png" alt="lock">
                            <img v-else class="lock" src="/images/open-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question">
+                           <div class="yes-no" v-if="question==='1'">
                               <p class="aquestion">هل أتممت الدرس السابق؟</p>
                               <div class="true-false">
                                 <img class="false" src="/images/like3.png" alt="true" @click="this.session='1'">
@@ -55,25 +78,59 @@
                             </div>
                         </li>
 
-                         <li>
+                         <li :class="{clickSession:true,active:session==='2'}" @click="this.question='2'">
                            <img  class="video" src="/images/video1.png" alt="video">
                              الدرس الثاني: شرح واجهة سكراتش وتعليم الرسم
                            <img  class="lock" src="/images/close-lock.png" alt="lock">
+                           <div class="yes-no" v-if="question==='2'">
+                              <p class="aquestion">هل أتممت الدرس السابق؟</p>
+                              <div class="true-false">
+                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='2'">
+                                <img  class="false" src="/images/dislike3.png" alt="false">
+                              </div>
+                            </div>                        
                         </li>
 
-                         <li><img  class="video" src="/images/video1.png" alt="video">
+                         <li :class="{clickSession:true,active:session==='3'}" @click="this.question='3'">
+                           <img  class="video" src="/images/video1.png" alt="video">
                              الدرس الثالث:شرح الاحداث في سكراتش والتطبيق عليها
                         <img  class="lock" src="/images/close-lock.png" alt="lock">
+                           <div class="yes-no" v-if="question==='3'">
+                              <p class="aquestion">هل أتممت الدرس السابق؟</p>
+                              <div class="true-false">
+                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='3'">
+                                <img  class="false" src="/images/dislike3.png" alt="false">
+                              </div>
+                            </div>
                         </li>
-                         <li><img  class="video" src="/images/video1.png" alt="video">
+
+                         <li :class="{clickSession:true,active:session==='4'}" @click="this.question='4'">
+                           <img  class="video" src="/images/video1.png" alt="video">
                              الدرس الرابع: شرح اوامر الحركة في سكراتش والتطبيق عليها
                         <img  class="lock" src="/images/close-lock.png" alt="lock">
+                           <div class="yes-no" v-if="question==='4'">
+                              <p class="aquestion">هل أتممت الدرس السابق؟</p>
+                              <div class="true-false">
+                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='4'">
+                                <img  class="false" src="/images/dislike3.png" alt="false">
+                              </div>
+                            </div>                        
                         </li>
-                         <li><img  class="video" src="/images/video1.png" alt="video">
+
+                         <li :class="{clickSession:true,active:session==='5'}" @click="this.question='5'">
+                           <img  class="video" src="/images/video1.png" alt="video">
                              الدرس الخامس: شرح اوامر المظاهر في سكراتش والتطبيق عليها
                         <img  class="lock" src="/images/close-lock.png" alt="lock">
+                           <div class="yes-no" v-if="question==='5'">
+                              <p class="aquestion">هل أتممت الدرس السابق؟</p>
+                              <div class="true-false">
+                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='5'">
+                                <img  class="false" src="/images/dislike3.png" alt="false">
+                              </div>
+                            </div>                        
                         </li>
                      </ul>
+
             </div>
 
       </div>
@@ -269,5 +326,30 @@ video{
 }
 .active{
     color: #25da75;
+}
+.course-progress{
+  display:flex;
+  margin-top: 7%;
+  margin-right: 12%;
+}
+.videoCircle{
+  border-radius:50%;
+  border:3px solid rgb(39, 39, 39);
+  width: 30px;
+  height: 30px;
+}
+.fullCircle{
+  background: #25da75;
+  padding: 3%;
+  margin-top: -1%;
+}
+.dash{
+margin-top: 15px;
+margin-right: -1px;
+margin-left: -1px;
+border-radius:5%;
+border:2px solid rgb(39, 39, 39);
+width: 40px;
+height: 1px;
 }
   </style>

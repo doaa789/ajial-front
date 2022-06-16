@@ -39,11 +39,11 @@
          <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة اسم الكتاب</p>
         </div>
 
-        <div class="one-story-container" v-if="search">
+        <div class="one-story-container" v-if="search"  style="display:flex">
           <div class="img-container"
             v-for="book in filteredBooks" 
             :key="book.id">
-            <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name">
+            <img  style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/${book.image}`" :alt="book.name">
             <div class="overlay">
               <div class="text">
                 <h5>اسم الكتاب</h5>
@@ -53,6 +53,7 @@
                 <button class="btn"> تحميل</button>
               </div>
             </div>
+
           </div>            
         </div>
 
@@ -64,10 +65,11 @@
 
       <div class="stories" v-else-if="searchBook==='noSearch'">
         <div class="routing">الكتب > قصص</div>
-        <div class="story-container">
+
+        <div class="story-container" style="margin-top: 5%;">
           <div class="img-container"
-          v-for="book in books" 
-          :key="book.id">
+          v-for="book in firstbooks" 
+          :key="book.id" style="margin-left: 3%;">
               <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name">
               <div class="overlay">
                   <div class="text">
@@ -78,7 +80,24 @@
                     <button class="btn"> تحميل</button>
                   </div>
               </div>
-          </div>            
+          </div>   
+        </div>
+
+        <div class="story-container" style="min-height: 80%;margin-top: -5%;">
+          <div class="img-container"
+          v-for="book in secondbooks" 
+          :key="book.id"  style="margin-left: 3%;">
+              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name">
+              <div class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{book.name}}</p>
+                    <h5>لمحة عن الكتاب</h5>
+                    <p>{{book.description}}</p>
+                    <button class="btn"> تحميل</button>
+                  </div>
+              </div>
+          </div> 
       </div>
 
     </div>
@@ -96,7 +115,9 @@ export default {
   data(){
         return{
         types:['لغات','روبوتيك','حساب ذهني','برمجة'],
-        books:sourceData.books, 
+        books:sourceData.books,
+        firstbooks:sourceData.firstbooks,
+        secondbooks:sourceData.secondbooks,
         search:'',        
         searchBook:'yesSearch',
         userName:'',
@@ -219,19 +240,18 @@ span:hover{
 
 .story-container{
   width: 100%;
-  height: 60%;
+  max-height: 62%;
   display:flex;
+
 }
 .one-story-container{
   margin-top: 8%;
   width: 100%;
   height: 40%;
-  display:flex;
 }
 .story-img{
   object-fit: cover;
   width: 100%;
-  margin: 1%;
   border-radius: 5%;
   height: 100%;
 }
@@ -255,13 +275,13 @@ span:hover{
 .overlay {
   border-radius: 5%;
   position: absolute;
-  bottom:100%;
+  bottom:101%;
   left: 0;
   right: 0;
   background: rgba( 255, 255, 255, 0.25 );
   backdrop-filter: blur( 18px );
   overflow: hidden;
-  width: 101%;
+  width: 103%;
   height:0%;
   transition: .5s ease;
 }

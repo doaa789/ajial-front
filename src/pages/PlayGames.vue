@@ -37,8 +37,26 @@
             <button class="center" @click="startGame">العب مجددا</button>
         </section>
 
-        <section v-else>
+        <section v-else >
+            <div style="display:flex;width: 160%;margin-right: -30%;">
+              <img src="/images/q1.jpg" style="margin-left:-1%;height: 75px;width: 65px;border-radius: 50%;border: 8px solid #494746;">
+
+              <div  id="healthbar" class="healthbar" style="margin-left:25%;">
+                <div class="healthbar__value" :style="playerBarStyles">
+                    {{ playerHealth }}%</div>
+                </div>
+
+            <div class="healthbar">
+                <div class="healthbar__value" :style="monsterBarStyles">
+                    {{ monsterHealth }}%</div>
+                </div>
+              <img src="/images/q6.jpg" style="margin-right: -1%;height: 75px;width: 65px;border-radius: 50%;border: 8px solid #494746;">
+
+</div>
             <section id="controls" v-if="appearControls==='appearControls'">
+
+
+
 
                 <button @click="attackMonster">
                     <img src="/images/gun3.gif" alt=""><br>
@@ -106,17 +124,11 @@
     <div class="container-play" v-if="winner==null">
       <section id="monster">
         <img src="/images/monster3.gif" alt="monster">
-        <div class="healthbar">
-          <div class="healthbar__value" :style="monsterBarStyles">
-               {{ monsterHealth }}%</div>
-        </div>
+ 
       </section>
       <section id="player">
         <img src="/images/solider3.gif" alt="solider">
-        <div  id="healthbar" class="healthbar">
-          <div class="healthbar__value" :style="playerBarStyles">
-               {{ playerHealth }}%</div>
-        </div>
+
       </section>
       </div>
 
