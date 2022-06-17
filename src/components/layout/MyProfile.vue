@@ -60,7 +60,7 @@
                         </div>
                         <div class="row" style="margin-top:-12%">
                             <img class="top-icon" src="/images/trophy2.png" alt="">
-                            <img class="top" src="/images/avatar6.png"  style="background-color:lightsalmon">
+                            <img class="top" src="../../../public/images/avatar6.png"  style="background-color:lightsalmon">
                         <p>نوري</p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="left">
-            <img class="circle" src="../components/layout/Logo/avatar10.png" alt="">
+            <img class="circle" src="./Logo/avatar10.png" alt="">
             <h2>سارة العوا</h2>
             <p>أنا ذكية جدا وأستطيع حل الألغاز بسهولة<br>أحب الرياضيات والعمليات الحسابية</p>
         </div>
@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import baseDialog from '../components/ui/BaseDialog.vue'
+import baseDialog from '../ui/BaseDialog.vue'
 export default {
   components:{
     baseDialog
@@ -119,7 +119,7 @@ dialog{
     box-shadow:0 3px 6px rgb(107, 93, 93);
     color:#7d52a0;
     text-align: center;
-    background-image: url('../assets/2.png');
+    background-image: url('../../assets/2.png');
     background-position-x: 52%;
     background-position-y: 70%;
     background-repeat: no-repeat;

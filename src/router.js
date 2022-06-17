@@ -1,18 +1,20 @@
 import{createRouter, createWebHistory}from 'vue-router';
 
 import App from './App.vue';
+import SignUp from './components/layout/SignUp.vue'
+import SignIn from './components/layout/SignIn.vue'
+import MyProfile from './components/layout/MyProfile.vue'
+import BooksList from './pages/BooksList.vue'
 import SearchCourse from './pages/thecourses/SearchCourse.vue'
 import ListofCourses from './pages/thecourses/ListofCourses.vue'
 import CoursesDetails from './pages/thecourses/CoursesDetails.vue'
-import JoinCourse from './pages/thecourses/JoinCourse.vue'
-import BooksList from './pages/BooksList.vue'
-import StartPlay from './pages/StartPlay.vue'
-import PlayGames from './pages/PlayGames.vue'
-import startGame3 from './pages/startGame3.vue'
-import MyProfile from './pages/MyProfile.vue'
+import CourseSession from './pages/thecourses/CourseSession.vue'
+import StartMonster from './pages/theGames/StartMonster.vue'
+import MathMonster from './pages/theGames/MathMonster.vue'
+import SecretIsland from './pages/theGames/SecretIsland.vue'
+import tabikha from './pages/theGames/tabikha.vue'
 import NotFound from './pages/NotFound.vue'
-import SignIn from './components/layout/SignIn.vue'
-import SignUp from './components/layout/SignUp.vue'
+
 
 const router=createRouter({
     history:createWebHistory(),
@@ -21,14 +23,15 @@ const router=createRouter({
         {path:'/signup',component:SignUp},
         {path:'/signin',component:SignIn},
         {path:'/MyProfile',component:MyProfile},
-        {path:'/courses/techniqe',component:ListofCourses},
-        {path:'/courses',component:SearchCourse},
-        {path:'/courses/scratch',component:CoursesDetails},
-        {path:'/courses/joiningScratch',component:JoinCourse},
         {path:'/library',component:BooksList},
-        {path:'/games',component:StartPlay},
-        {path:'/PlayGame',component:PlayGames},
-        {path:'/contact',component:startGame3},
+        {path:'/courses',component:SearchCourse},
+        {path:'/courses/techniqe',component:ListofCourses},
+        {path:'/courses/scratch',component:CoursesDetails},
+        {path:'/courses/joiningScratch',component:CourseSession},
+        {path:'/TheSecretIsland',component:SecretIsland},
+        {path:'/games',component:StartMonster},
+        {path:'/PlayGame',component:MathMonster},
+        {path:'/tabikha',component:tabikha},
         {path:'/:notFound(.*)',component:NotFound},
 
 

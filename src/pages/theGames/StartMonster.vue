@@ -1,4 +1,6 @@
 <template>
+<router-view></router-view>
+
 <teleport to="body">
  <dialog open v-if="dialogClose">
  <div class="dialog-form">

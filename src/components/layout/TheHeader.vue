@@ -10,9 +10,18 @@
              <li><router-link to="/">الرئيسية</router-link></li>
               <li><router-link to="/courses">كورسات</router-link></li>
               <li><router-link to="/library">كتب</router-link></li>
-              <li><router-link to="/games">العب</router-link></li>
-              <li><router-link to="/tabikha">طابقها</router-link></li>
-              <li><router-link to="/contact"> تواصل</router-link></li>
+
+              <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">العاب</a>
+                <div class="dropdown-content">
+                    <router-link to="/TheSecretIsland">جزيرة الأسرار</router-link>
+                    <router-link to="/games">وحش الرياضيات</router-link>
+                    <router-link to="/tabikha">طابقها</router-link>
+
+                </div>
+              </li>
+
+
            </ul>
 
 
@@ -69,6 +78,10 @@ nav{
 }
 
 ul{
+  overflow: hidden;
+
+
+
   width: 40%;
   list-style: none;
   margin: 0%;
@@ -81,7 +94,7 @@ ul{
 
 li{
   min-width: 17%;
-  margin-left: 2%;
+  margin-left: 5%;
   }
 a{
   text-decoration-line:none ;
@@ -137,5 +150,44 @@ button:active {
   background-color: #25da75;
   color: #7d52a0;
   
+}
+
+
+.dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #25da75;
+  border-radius: 15px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 </style>
