@@ -57,16 +57,16 @@
                     <img class="image" src="/images/scratch.png" alt="course">
                      <div class="set-icon">
                          <base-card class="icon-card">
-                            <img class="image-icon" src="/images/1.png" alt="certificate">    
-                            <p>شهادة مصدقة</p>
+                            <img class="image-icon" src="/images/1.png" alt="certificate" style="min-width:40px;min-height:45px;display: absolute;">    
+                            <p style="margin-top:-21%;display: relative;">شهادة مصدقة</p>
                          </base-card>
                          <base-card class="icon-card">
-                            <img class="image-icon" src="/images/4.png" alt="author">    
-                            <p>محمد الحلاق</p>
+                            <img class="image-icon" src="/images/4.png" alt="author" style="min-width:35px;min-height:35px;display: absolute;margin-top: 6%;">    
+                            <p style="margin-top:-11%;display: relative;">محمد الحلاق</p>
                          </base-card>
                          <base-card class="icon-card">
-                            <img class="image-icon" src="/images/2.png" alt="session">    
-                            <p>10 دروس</p>
+                            <img class="image-icon" src="/images/2.png" alt="session" style="min-width:40px;min-height:45px;display: absolute;">    
+                            <p style="margin-top:-21%;display: relative;">10 دروس</p>
                          </base-card>
                      </div>
                      <base-button class="enter" @click="enterCourse">البدء بالتعلم</base-button>
@@ -275,9 +275,9 @@ export default {
     }
 
 .image-icon{
+ margin-right: 17%;
     max-width: 1.75rem;
     max-height: 1.75rem;
-    margin: auto;
 }
 
 .icon{

@@ -13,7 +13,7 @@
       <img src="/images/course2.png" style="height:70%;margin-top:-4rem">
 
       <div v-if="slider==1" class="slider">
-          <img src="/images/safe7.gif" alt="safe">
+          <img src="/images/game.png" alt="safe">
         <div class="safe">
           <h2>لا قلق بعداليوم</h2>
           <p class="safe-p">تقدم منصة أجيال للجيل اليافع<br> حزمة تعليمية ترفيهية آمنة</p>
@@ -21,7 +21,7 @@
       </div>
 
       <div v-if="slider==2" class="slider">
-          <img src="/images/like7.gif" alt="social">
+          <img src="/images/media.png" alt="social">
         <div class="safe">
           <h2>تجربة اجتماعية هادفة</h2>
           <p class="safe-p">مع منصة أجيال يمكنك الاستمتاع بمزايا<br> منصات التواصل الاجتماعي من خلال<br>المتحتوى الهادف الذي نقدمه</p>
@@ -29,7 +29,7 @@
       </div>
 
       <div v-if="slider==3" class="slider">
-          <img src="/images/safe7.gif" alt="safe">
+          <img src="/images/topBooks.png" alt="safe">
         <div class="safe">
           <h2>العلامة المميزة</h2>
           <p class="safe-p">اقرأ وتعلم أكثر لتحصل على العلامة المميزة <br>على حسابك الشخصي</p>
@@ -442,16 +442,18 @@ section.top{
 }
 .slider{
   margin:4rem 0rem 0rem 15rem;
-  width: 50%;
+  width: 45%;
+  height: 250px;
   float: left;
-  font-size: 15px;
+  font-size: 16px;
   position: relative;
   animation-name: example;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
+   animation-direction: alternate;
 }
 @keyframes example {
-  0%   { left:-150px; top:0px;}
+  0%   {left:0px; top:-80px;}
   25%  { left:0px; top:0px;}
   from {opacity: .05} 
   to {opacity: 1}
@@ -546,12 +548,12 @@ section.top{
       direction: rtl;
 }
 .slider h2{
-  margin-top:0;
+  margin-top:1rem;
 }
 .slider img{
       border-radius:15px;
-      height: 195px;
-      width: 190px;
+      height: 200px;
+      width: 200px;
       margin:0rem 1rem 0rem 1rem;
 }
 footer img{
