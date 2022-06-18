@@ -1,7 +1,26 @@
 <template>
-    <header>
+    <header v-if="this.$store.state.tabikha">
         <nav>
+          <div class="logo">
+            <img src="./Logo/logo2.png" >      
+          </div>
 
+           <ul>
+             <li><router-link to="/">لماذا طابقها؟</router-link></li>
+              <li><router-link to="/courses">ماذا تعمل؟</router-link></li>
+              <li><router-link to="/library">مراكز الشراء</router-link></li>
+              <li><router-link to="/">عودة الى أجيال</router-link></li>
+           </ul>
+
+            <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
+              <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
+              <button @click="this.$store.state.enterd=''">تسجيل خروج</button>      
+            </div>
+
+        </nav>>
+    </header>
+    <header v-else>
+        <nav>
           <div class="logo">
             <img src="./Logo/logo.png" >      
           </div>
@@ -10,24 +29,19 @@
              <li><router-link to="/">الرئيسية</router-link></li>
               <li><router-link to="/courses">كورسات</router-link></li>
               <li><router-link to="/library">كتب</router-link></li>
-
               <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">العاب</a>
                 <div class="dropdown-content">
                     <router-link to="/TheSecretIsland">جزيرة الأسرار</router-link>
                     <router-link to="/games">وحش الرياضيات</router-link>
-                    <router-link to="/tabikha">طابقها</router-link>
-
+                    <router-link to="/tabikha" @click="this.$store.state.tabikha=true">طابقها</router-link>
                 </div>
               </li>
-
-
            </ul>
-
 
             <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
               <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
-              <button style="cursor:none;">اهلا بعودتك</button>      
+              <button @click="this.$store.state.enterd=''">تسجيل خروج</button>      
             </div>
 
              <div v-else class="user-sign-up">
@@ -35,7 +49,8 @@
               <button  @click="logUp">انشاء حساب</button>      
             </div>
         </nav>
-        
+
+
     </header>
 </template>
 

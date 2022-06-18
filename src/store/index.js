@@ -7,13 +7,13 @@ const store=createStore({
     state(){
         return{
             enterd:'',
+            tabikha:false,
          }
         },
         mutations:{
             change(state){
                 state.enterd='valid'; 
             },
-
         } ,
         getters:{
             finalEnter(state){

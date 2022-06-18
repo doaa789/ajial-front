@@ -4,17 +4,17 @@
   <template v-slot:form @submit.prevent="logIn">   
     <p class="title">مرحبا بك مجددا</p>
     
-    <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
-      <input id="user-name" name="user-name" placeholder="اسم المستخدم" type="text" v-model.trim="email" @blur="validateName"/>
-      <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة الاسم</p>
+    <div class="form-control" :class="{invalid:emailValidity==='invalid'}"> 
+      <input  placeholder="بريد المستخدم" type="text" v-model.trim="user.email" @blur="validateEmail"/>
+      <p v-if="emailValidity==='invalid'" class="validate">الرجاء التأكد من صحة البريد</p>
     </div>
     <div class="form-control" :class="{invalid:userPassValidity==='invalid'}">
-      <input id="password" name="password" placeholder="كلمة المرور" type="password" v-model.trim="password" @blur="validatePassword"/>
+      <input id="password" name="password" placeholder="كلمة المرور" type="password" v-model.trim="user.password" @blur="validatePassword"/>
       <p v-if="userPassValidity==='invalid'" class="validate">الرجاء التأكد من صحة كلمة المرور</p>
     </div>
 
-      <div class="alert alert-success" v-if="isSuccess">تم تسجيل الدخول بنجاح</div>
-  <div class="alert alert-success" v-if="loading">الرجاء الانتظار قليلا.....</div>
+      <p style="color:red" v-if="error">{{error}}</p>
+      <p v-if="loading">.....الرجاء الانتظار قليلا</p>
 
 
     <div>
@@ -30,7 +30,6 @@
 
 <script>
 import baseDialog from '../ui/BaseDialog.vue';
-import axios from "axios";
 
 export default {
   components:{
@@ -38,46 +37,26 @@ export default {
   },
   data(){
         return{
-
-        userNameValidity:'pending',
+        emailValidity:'pending',
         userPassValidity:'pending',
         dialogClose:true,
 
-              loading: false,
-      email:'',
-      password:'',
-      isSuccess:false
+        user:{
+          email:null,
+          password:null,
+        },
+        loading: false,
+        error:false,
+        isSuccess:false
         };
     },
      methods:{
-        logUp(){
-               this.$router.push('/signup')
-
-            },
-
-        logIn(){
-    this.loading= true,
-    axios.post('https://glacial-garden-81387.herokuapp.com/api/v1/login', {
-    email: this.email,
-    password: this.password,
-    })
-      .then((response) => {
-        this.isSuccess=true;
-        this.loading= false,
-        console.log(response);})
-      .catch(error => console.log(error))
-      .finally(() => this.loading = false)
-           this.$store.commit('change');
-           this.dialogClose=false;
-      
-  }, 
-
-       validateName(){
-          if (this.userName ===''){
-            this.userNameValidity='invalid';
+             validateEmail(){
+          if (this.email ===''){
+            this.emailValidity='invalid';
           }
           else{
-            this.userNameValidity='valid';
+            this.emailValidity='valid';
           }
         },
           validatePassword(){
@@ -88,7 +67,12 @@ export default {
             this.userPassValidity='valid';
           }
 
-        }
+        },
+        logUp(){
+               this.$router.push('/signup')
+            },
+
+
     }
 }
 </script>
@@ -101,6 +85,8 @@ dialog{
     text-align: center;
     font-size: 30px;
     color: #7d52a0;
+    width: 50%;
+    margin-right: 25%;
     }
 
 input{
@@ -139,4 +125,35 @@ input{
   margin-top: 1%;
   margin-right: 37%;
 }
+/*   
+import axios from "axios";
+
+
+this.loading= true,
+    axios.post('https://glacial-garden-81387.herokuapp.com/api/v1/login', {
+    email: this.email,
+    password: this.password,
+    })
+      .then((response) => {
+        this.isSuccess=true;
+        this.loading= false,
+        console.log(response);})
+      .catch(error => console.log(error))
+      .finally(() => this.loading = false)
+
+
+
+              async logIn(){
+          this.error=null;
+          try{
+            await this.$store.dispatch(type:'login',this.user);
+            await this.$router.push({name:posts});
+          }
+          catch(error) {this.error=error;}
+          finally{this.loading=error;}
+           this.$store.commit('change');
+           this.dialogClose=false;
+           }
+
+ */
 </style>
