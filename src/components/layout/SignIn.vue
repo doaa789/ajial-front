@@ -72,7 +72,17 @@ export default {
                this.$router.push('/signup')
             },
 
-
+          async logIn(){
+          this.error=null;
+          try{
+            await this.$store.dispatch('login',this.user);
+            await this.$router.push({name:"posts"});
+          }
+          catch(error) {this.error=error;}
+          finally{this.loading=false;}
+           this.$store.commit('change');
+           this.dialogClose=false;
+           }
     }
 }
 </script>
