@@ -12,7 +12,6 @@ import CourseSession from './pages/thecourses/CourseSession.vue'
 import StartMonster from './pages/theGames/StartMonster.vue'
 import MathMonster from './pages/theGames/MathMonster.vue'
 import SecretIsland from './pages/theGames/SecretIsland.vue'
-import tabikha from './pages/theGames/tabikha.vue'
 import NotFound from './pages/NotFound.vue'
 
 
@@ -31,7 +30,6 @@ const router=createRouter({
         {path:'/TheSecretIsland',component:SecretIsland},
         {path:'/games',component:StartMonster},
         {path:'/PlayGame',component:MathMonster},
-        {path:'/tabikha',component:tabikha},
         {path:'/:notFound(.*)',component:NotFound},
 
 

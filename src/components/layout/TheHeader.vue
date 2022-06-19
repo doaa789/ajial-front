@@ -5,7 +5,7 @@
             <img src="./Logo/logo2.png" >      
           </div>
 
-           <ul>
+           <ul class="header">
              <li><router-link to="/tabikha">لماذا طابقها؟</router-link></li>
               <li><router-link to="/tabikha/HowToWork">كيف تعمل؟</router-link></li>
               <li><router-link to="/tabikha/ProductCenter">مراكز الشراء</router-link></li>
@@ -25,16 +25,18 @@
             <img src="./Logo/logo.png" >      
           </div>
 
-           <ul>
+           <ul class="header">
              <li><router-link to="/">الرئيسية</router-link></li>
               <li><router-link to="/courses">كورسات</router-link></li>
               <li><router-link to="/library">كتب</router-link></li>
               <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">العاب</a>
                 <div class="dropdown-content">
-                    <router-link to="/TheSecretIsland">جزيرة الأسرار</router-link>
-                    <router-link to="/games">وحش الرياضيات</router-link>
-                    <router-link to="/tabikha" @click="this.$store.state.tabikha=true">طابقها</router-link>
+                  
+                    <li><router-link to="/TheSecretIsland">جزيرة الأسرار</router-link></li>
+                    <li><router-link to="/games">وحش الرياضيات</router-link></li>
+                    <li class="tabikha" @click="this.$store.state.tabikha=true">طابقها</li>
+                    
                 </div>
               </li>
            </ul>
@@ -92,11 +94,8 @@ nav{
   cursor: pointer;
 }
 
-ul{
+.header{
   overflow: hidden;
-
-
-
   width: 40%;
   list-style: none;
   margin: 0%;
@@ -107,20 +106,20 @@ ul{
   
 }
 
-li{
+.header li{
   min-width: 17%;
   margin-left: 5%;
   }
-a{
+.tabikha,a{
   text-decoration-line:none ;
   background: transparent;
   cursor: pointer;
   color: #ffffff;
 
 }
-a:hover,
-a:active,
-a.active{
+.tabikha,a:hover,
+.tabikha,a:active,
+.tabikha,a.active{
   color: #25da75;
   background-color: #ffffff;
   border-right:7px solid #ffffff;
@@ -194,10 +193,10 @@ li.dropdown {
 .dropdown-content a {
   color: #25da75;
   border-radius: 15px;
-  padding: 12px 16px;
+  padding: 6px 8px;
   text-decoration: none;
   display: block;
-  text-align: center;
+  text-align:right;
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1;}

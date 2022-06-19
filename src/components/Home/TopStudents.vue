@@ -1,6 +1,6 @@
 <template>
 <div class="member">
-      <h2 class="title">لوحة طلابنا المتميزين </h2>
+      <h2 class="titleTop">لوحة طلابنا المتميزين </h2>
       <div style="display:flex;padding-right:11%;">
       <div style="padding-left:5%;">
       <div class="topStudents" style="padding-left:36%;">
@@ -79,7 +79,7 @@
 .trophy3{
       margin-top: 1%;
 }
-.title{
+.titleTop{
     margin-right: 37%;
     margin-bottom: 5%;
     margin-top: 5%;

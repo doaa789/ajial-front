@@ -589,7 +589,7 @@ input{
 
 }
 .character{
-    margin-top: -7%;
+    margin-top: 3%;
     margin-right: 10%;
     min-width: 55%;
 }

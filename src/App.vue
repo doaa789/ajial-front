@@ -19,43 +19,13 @@
       </div>
    </section>
 
-  <div class="tabikhaCenter" v-if="this.$store.state.tabikha">
-        <div style="display:flex">
-      <img class="mobileImg2" src="./assets/mobile2.png" alt="">
-      <div style="display:grid;">
-      <p style="margin-right:5%;margin-top:25%;font-size: 38px;width: 100%;color:#F7AD0C;">الأفضل من الجميع</p> 
-      <p style="margin-right:-5%;margin-top:-25%;font-size: 30px;width: 145%;">مع طابقها لن تضطر التخلي عن الفائدة التي تقدمها<br>الألعاب الملموسة في نمو طفلك مقابل الحصول<br>على الالعاب الالكترونية الجذابة للأطفال</p> 
-      </div>
-      <img class="squareImg" src="./assets/1.png" alt="">
-
-      </div>
-  </div>
-
+   <tabikha-top v-if="this.$store.state.tabikha"></tabikha-top>
    <features  v-else></features>
 
-     <div class="tabikhaCenter2" v-if="this.$store.state.tabikha">
-             <div style="display:flex">
-      <img class="mobileImg4" src="./assets/33.png" alt="">
-      <div style="display:grid;">
-      <p style="margin-right:-15%;margin-top:45%;font-size: 38px;width: 125%;color:#E65C51;">ما الفكرة؟</p> 
-      <p style="margin-right:-45%;margin-top:-35%;font-size: 30px;width: 145%;">جاءت فكرة طابقها في الدمج مابين العالم <br>الملموس والالكتروني في قالب عربي محبب </p> 
-      </div>
-      <img class="squareImg" src="./assets/11.png" alt="">
-      </div>
-  </div>
+    <tabikha-center v-if="this.$store.state.tabikha"></tabikha-center>
     <new-courses v-else></new-courses>
 
-     <div class="tabikhaBottom" v-if="this.$store.state.tabikha">
-        <div style="display:flex">
-      <img class="mobileImg3" src="./assets/plane.png" alt="">
-      <div style="display:grid;">
-      <p style="margin-right:5%;margin-top:25%;font-size: 38px;width: 125%;color:#E65C51;">ما تأثير اللعبة في الأطفال؟</p> 
-      <p style="margin-right:-5%;margin-top:-35%;font-size: 30px;width: 145%;">ان من أبرز ما يساعد طفلك على النمو بشكل سليم هو<br>القدرة على الربط بين الحواس الخمسة من  خلال التفاعل<br>مع العالم الفيزيائي المحيط بطفلك</p> 
-      </div>
-      <img class="squareImg2" src="./assets/child.png" alt="">
-
-      </div>
-  </div>
+    <tabikha-bottom v-if="this.$store.state.tabikha"></tabikha-bottom>
     <top-students v-else></top-students>
     <new-books v-if="this.$store.state.tabikha===false "></new-books>
     <testimonials v-if="this.$store.state.tabikha===false"></testimonials>
@@ -76,6 +46,9 @@ import newBooks from './components/Home/newBooks.vue';
 import ContactUs from './components/Home/ContactUs.vue';
 import HomeFooter from './components/Home/HomeFooter.vue';
 import TopStudents from './components/Home/TopStudents.vue';
+import tabikhaTop from './pages/tabikha/tabikhaTop.vue';
+import tabikhaCenter from './pages/tabikha/tabikhaCenter.vue';
+import tabikhaBottom from './pages/tabikha/tabikhaBottom.vue';
 
 export default {
   components:{
@@ -86,7 +59,10 @@ export default {
     newBooks,
     ContactUs,
     HomeFooter,
-    TopStudents
+    TopStudents,
+    tabikhaTop,
+    tabikhaCenter,
+    tabikhaBottom
 },    
 }
 </script>
@@ -128,58 +104,17 @@ body {
   height: 44rem;
   background-color: rgb(23, 227, 210);
 }
-.tabikhaCenter{
-  color: #fff;
-  direction: rtl;
-  height: 44rem;
-  background-color: rgb(231, 97, 177);
-}
-.tabikhaCenter2{
-  color: #fff;
-  direction: rtl;
-  height: 44rem;
-  background-color:#835da3 ;
-}
-.tabikhaBottom{
-  color: #fff;
-  direction: rtl;
-  height: 44rem;
-  background-color:#F7AD0C;
-}
+
+
+
 .mobileImg1{
   margin-right: 15%;
   margin-top: 5%;
   height: 500px;
   width: 250px;
 }
-.squareImg{
-  margin-left: 2%;
-  margin-top: 15%;
-  height: 350px;
-  width: 350px;
-}
-.squareImg2{
-  margin-left: 2%;
-  margin-top: 20%;
-  height: 350px;
-  width: 350px;
-}
-.mobileImg2{
-  margin-top: 8%;
-  height: 500px;
-  width: 450px;
-}
-.mobileImg4{
-  margin-top: 8%;
-  margin-right: -4%;
-  height: 500px;
-  min-width: 650px;
-}
-.mobileImg3{
-  margin-top: 3%;
-  height: 500px;
-  width: 450px;
-}
+
+
 .tabikhaButton{
   width:150px;margin-right:5%;margin-top:-14%;display: relative;cursor: pointer;
 }
