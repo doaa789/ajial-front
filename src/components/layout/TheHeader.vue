@@ -6,10 +6,10 @@
           </div>
 
            <ul>
-             <li><router-link to="/">لماذا طابقها؟</router-link></li>
-              <li><router-link to="/courses">ماذا تعمل؟</router-link></li>
-              <li><router-link to="/library">مراكز الشراء</router-link></li>
-              <li><router-link to="/">عودة الى أجيال</router-link></li>
+             <li><router-link to="/tabikha">لماذا طابقها؟</router-link></li>
+              <li><router-link to="/tabikha/HowToWork">كيف تعمل؟</router-link></li>
+              <li><router-link to="/tabikha/ProductCenter">مراكز الشراء</router-link></li>
+              <li><router-link to="/" @click="this.$store.state.tabikha=false">عودة الى أجيال</router-link></li>
            </ul>
 
             <div v-if="this.$store.state.enterd==='valid'" class="user-enter">

@@ -589,7 +589,7 @@ input{
 
 }
 .character{
-    margin-top: -4%;
+    margin-top: -7%;
     margin-right: 10%;
     min-width: 55%;
 }
@@ -607,7 +607,7 @@ input{
         width: 13%;
         margin-right: 5%;
 position:absolute;
-margin-top: -8%;
+margin-top: -7%;
     }
 
     /* The dots/bullets/indicators */
