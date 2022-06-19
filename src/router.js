@@ -15,7 +15,7 @@ import SecretIsland from './pages/theGames/SecretIsland.vue'
 import NotFound from './pages/NotFound.vue'
 
 
-const router=createRouter({
+const router = createRouter({
     history:createWebHistory(),
     routes:[
         {path:'/',component:App},

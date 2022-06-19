@@ -6,10 +6,10 @@
           </div>
 
            <ul class="header">
-             <li><router-link to="/tabikha">لماذا طابقها؟</router-link></li>
-              <li><router-link to="/tabikha/HowToWork">كيف تعمل؟</router-link></li>
+             <li><router-link to="/tabikha" @click="this.$store.state.whytabikha=true;this.$store.state.workTabikha=false;">لماذا طابقها؟</router-link></li>
+              <li><router-link to="/tabikha/HowToWork" @click="this.$store.state.workTabikha=true;this.$store.state.whytabikha=false;">كيف تعمل؟</router-link></li>
               <li><router-link to="/tabikha/ProductCenter">مراكز الشراء</router-link></li>
-              <li><router-link to="/" @click="this.$store.state.tabikha=false">عودة الى أجيال</router-link></li>
+              <li><router-link to="/" @click="this.$store.state.tabikha=false;this.$store.state.workTabikha=false">عودة الى أجيال</router-link></li>
            </ul>
 
             <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
@@ -17,8 +17,9 @@
               <button @click="this.$store.state.enterd=''">تسجيل خروج</button>      
             </div>
 
-        </nav>>
+        </nav>
     </header>
+
     <header v-else>
         <nav>
           <div class="logo">
@@ -35,7 +36,7 @@
                   
                     <li><router-link to="/TheSecretIsland">جزيرة الأسرار</router-link></li>
                     <li><router-link to="/games">وحش الرياضيات</router-link></li>
-                    <li class="tabikha" @click="this.$store.state.tabikha=true">طابقها</li>
+                    <li  @click="this.$store.state.tabikha=true;this.$store.state.workTabikha=false"><router-link to="/tabikha">طابقها</router-link></li>
                     
                 </div>
               </li>
@@ -43,7 +44,7 @@
 
             <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
               <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
-              <button @click="this.$store.state.enterd=''">تسجيل خروج</button>      
+              <button @click="logout">تسجيل خروج</button>      
             </div>
 
              <div v-else class="user-sign-up">
@@ -64,7 +65,21 @@ export default {
             },
         appearProfile(){
           this.$router.push('/MyProfile');
-        }
+        },
+    async logout() {
+      this.loading = true;
+
+      try {
+        await this.$store.dispatch('logout');
+        await this.$router.push({ name: 'login' })
+      } catch (error) {
+        this.error = error;
+      } finally {
+        this.loading = false;
+        this.$store.state.enterd=''
+
+      }
+    }
     }, 
 }
 </script>

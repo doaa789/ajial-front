@@ -18,10 +18,10 @@
 
 
     <div>
-      <base-button class="btn" @click="logIn">تسجيل الدخول</base-button>
+      <base-button class="btn" @click.prevent="login">تسجيل الدخول</base-button>
     </div>
     <p class="note">هل انت مستخدم جديد؟<br>بامكانك انشاء حسابك من 
-    <a href="#" @click="logUp">هنا</a></p>
+    <a href="#" @click="signup">هنا</a></p>
     
   </template>
  </base-dialog>
@@ -51,7 +51,7 @@ export default {
         };
     },
      methods:{
-             validateEmail(){
+        validateEmail(){
           if (this.email ===''){
             this.emailValidity='invalid';
           }
@@ -59,7 +59,7 @@ export default {
             this.emailValidity='valid';
           }
         },
-          validatePassword(){
+        validatePassword(){
           if (this.password ===''){
             this.userPassValidity='invalid';
           }
@@ -68,11 +68,11 @@ export default {
           }
 
         },
-        logUp(){
-               this.$router.push('/signup')
-            },
+        signup(){
+          this.$router.push('/signup')
+        },
 
-          async logIn(){
+        async login(){
           this.error=null;
           try{
             await this.$store.dispatch('login',this.user);
@@ -82,7 +82,7 @@ export default {
           finally{this.loading=false;}
            this.$store.commit('change');
            this.dialogClose=false;
-           }
+        }
     }
 }
 </script>

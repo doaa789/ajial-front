@@ -1,5 +1,5 @@
 <template>
-  <section class="tabikhaTop" v-if="this.$store.state.tabikha">
+  <section class="tabikhaTop" v-if="this.$store.state.tabikha && !this.$store.state.workTabikha">
       <the-header></the-header>
       <div style="display:flex">
       <img class="mobileImg1" src="./assets/mobile1.png" alt="">
@@ -10,7 +10,27 @@
       </div>
    </section>
 
-   <section class="ajialTop" v-else> 
+     <section class="tabikhaTop1" v-if="this.$store.state.workTabikha && this.$store.state.tabikha">
+      <the-header></the-header>
+      <div style="display:flex">
+
+      <div style="display:grid;margin-right:20%;">
+      <p class="learn" style="margin-top:25%;margin-right:11%;">تعلم في 3 خطوات</p>
+      <p v-if="this.theslider==1" style="margin-right:11%;margin-top:-5%;font-size: 30px;width: 125%;">افتح جهازك المحمول وصله مع اللعبة<br> باستخدام البلوتوث</p> 
+      <p v-else-if="this.theslider==2" style="margin-right:11%;margin-top:-5%;font-size: 30px;width: 125%;">ضع المحمول في المكان المخصص له <br>وشاهد الفيديو</p> 
+      <p v-else-if="this.theslider==3" style="margin-right:11%;margin-top:-5%;font-size: 30px;width: 125%;">أجب على الأسئلة من خلال مطابقة الصورة<br>على الشاشة مع البطاقة المناسبة</p> 
+      <div class="dot1-container">
+            <span :class="{dot1:true,activedot1:theslider===1}" @click="theslider=1"></span> 
+            <span :class="{dot1:true,activedot1:theslider===2}" @click="theslider=2"></span> 
+            <span :class="{dot1:true,activedot1:theslider===3}" @click="theslider=3"></span> 
+      </div>
+      </div>
+      <img v-if="this.theslider==1" class="mobileImg2" src="./assets/bluetooth.png" alt="">
+      <img v-else-if="this.theslider==2" class="mobileImg11" src="./assets/63.png" alt="">
+      </div>
+   </section>
+
+   <section class="ajialTop" v-if="!this.$store.state.workTabikha && !this.$store.state.tabikha"> 
       <the-header></the-header>
       <p class="hello">أهلا بجيل المستقبل في<br> منصة أجيال</p>
       <div class="arrow">
@@ -63,7 +83,12 @@ export default {
     tabikhaTop,
     tabikhaCenter,
     tabikhaBottom
-},    
+},  
+data(){
+  return{
+    theslider:1,
+  };
+}  
 }
 </script>
 <style>
@@ -104,7 +129,19 @@ body {
   height: 44rem;
   background-color: rgb(23, 227, 210);
 }
-
+.tabikhaTop1{
+  color: #fff;
+  direction: rtl;
+  height: 44rem;
+  background-color:#E65C51;
+}
+.learn{
+    margin-right:5%;
+    margin-top:25%;
+    font-size: 38px;
+    width: 100%;
+  color: yellow;
+}
 
 
 .mobileImg1{
@@ -113,8 +150,18 @@ body {
   height: 500px;
   width: 250px;
 }
-
-
+.mobileImg11{
+  margin-right: 10%;
+  margin-top: 5%;
+  height: 400px;
+  width: 400px;
+}
+.mobileImg2{
+  margin-right: 15%;
+  margin-top: 10%;
+  height: 300px;
+  width: 150px;
+}
 .tabikhaButton{
   width:150px;margin-right:5%;margin-top:-14%;display: relative;cursor: pointer;
 }
@@ -148,6 +195,31 @@ body {
   border-radius:15px;
   cursor: pointer;
   background-color: #ffffff;
+}
+.dot1-container{
+  text-align:center;
+  margin-top: 0;
+  margin-right: 3rem;
+  max-height: 5rem;
+}
+
+.dot1 {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin:2rem 0.25rem 19rem;
+  background-color: rgb(220, 64, 58);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.dot1:hover,
+.activedot1 {
+  height: 26px;
+  width: 26px;
+  background-color: #fff;
+
 }
 /*      <img class="tabikhaButton" src="./assets/button.svg" alt="">
       <p style="display:absolute;margin-top:-23%;margin-right:12%;">تعلم المزيد</p>*/

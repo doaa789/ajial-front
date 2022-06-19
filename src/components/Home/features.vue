@@ -83,15 +83,14 @@ export default {
 
 }
 .slider{
+  display: flex;
   color: #fff;
   background: rgba(255, 255, 255, 0.102);
   backdrop-filter: blur( 20px );
   border-radius: 25px;
   padding: 2rem;
 }
-.slider{
-  display: flex;
-}
+
 .safe{
       height: 110px;
       direction: rtl;

@@ -1,7 +1,7 @@
 <template>
       <div class="tabikhaCenter">
         <div style="display:flex">
-      <img class="mobileImg2" src="../../assets/mobile2.png" alt="">
+      <img class="mobileImg22" src="../../assets/mobile2.png" alt="">
       <div style="display:grid;">
       <p class="title1">الأفضل من الجميع</p> 
       <p class="paragraph1">مع طابقها لن تضطر التخلي عن الفائدة التي تقدمها<br>الألعاب الملموسة في نمو طفلك مقابل الحصول<br>على الالعاب الالكترونية الجذابة للأطفال</p> 
@@ -32,7 +32,7 @@
   height: 350px;
   width: 350px;
 }
-.mobileImg2{
+.mobileImg22{
   margin-top: 8%;
   height: 500px;
   width: 450px;

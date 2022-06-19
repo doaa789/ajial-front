@@ -1,74 +1,78 @@
+
 {
-    "books":[
+    "data": [
         {
-            "Id":1,
-            "name":"قصص تعتز بها",
-            "image":"fox.jpg",
-            "description":"أسلوب بسيط طفولي ومشوق ",
-            "url":"https://www.jarir.com/jarir-publication-478136.html"
-           },
-        {
-            "Id":2,
-            "name":"امير المياه",
-            "image":"water.png",
-            "description":" يحوي حكايات ممتعة تحمل الفائدة  "
-           },
-        {
-            "Id":3,
-            "name":"ابنة السلطان",
-            "image":"son1.jpg",
-            "description":" يحوي حكايات تحمل الفائدة والاثارة "
-           },
-        {
-            "Id":4,
-            "name":"قصص للبنات",
-            "image":"girl.jpg",
-            "description":" يحوي حكايات تحمل الاثارة بأسلوب"
-           },
-           {
-            "Id":5,
-            "name":"قصص الاطفال",
-            "image":"duck1.jpg",
-            "description":" يحوي حكايات ممتعة تحمل الفائدة "
-           }
-          
-          ],
-          "firstbooks":[
-            {
-                "Id":1,
-                "name":"قصص تعتز بها",
-                "image":"fox.jpg",
-                "description":"أسلوب بسيط طفولي ومشوق ",
-                "url":"https://www.jarir.com/jarir-publication-478136.html"
-               },
-            {
-                "Id":2,
-                "name":"امير المياه",
-                "image":"water.png",
-                "description":" يحوي حكايات ممتعة تحمل الفائدة  "
-               },
-            {
-                "Id":3,
-                "name":"ابنة السلطان",
-                "image":"son1.jpg",
-                "description":" يحوي حكايات تحمل الفائدة والاثارة "
-               }
-
-              ],
-
-              "secondbooks":[
+            "id": 1,
+            "name": "قصص",
+            "books": [
                 {
-                    "Id":4,
-                    "name":"قصص للبنات",
+                    "name":"قصص تعتز بها",
+                    "image":"fox.jpg",
+                    "title": "أسلوب بسيط طفولي ومشوق ",
+                    "author": "أحمد الشقيري",
+                    "link": "https://www.i-know-python.com/computer-vision-game-using-mediapipe-and-python",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/1/عدالة-السماء.pdf"
+                },
+                {
+                    "name": "امير المياه",
+                    "title": " يحوي حكايات ممتعة تحمل الفائدة  ",
+                    "author":"محمد العوضي" ,
+                    "image":"water.png",
+                    "link": "https://www.bing.com/search?q=%D9%83%D8%AA%D8%A7%D8%A8+%D8%B9%D8%AF%D8%A7%D9%84%D8%A9+%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%A1&cvid=688bf3de57f4414e86c37b82f6563021&aqs=edge..69i57j69i65.5994j0j1&pglt=297&FORM=ANNTA1&PC=DCTS",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/10/يوم-عرفة.pdf"
+                },
+                {
+                    "name": "ابنة السلطان",
+                    "title": "يحوي حكايات تحمل الفائدة والاثارة",
+                    "author": "طه حسين",
+                    "image":"son1.jpg",
+                    "link": "https://www.bing.com/search?q=%D9%83%D8%AA%D8%A7%D8%A8+%D8%B9%D8%AF%D8%A7%D9%84%D8%A9+%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%A1&cvid=688bf3de57f4414e86c37b82f6563021&aqs=edge..69i57j69i65.5994j0j1&pglt=297&FORM=ANNTA1&PC=DCTS",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/11/2يوم-عرفة.pdf"
+                },
+                {
+                    "name": "قصص للبنات",
+                    "title": " يحوي حكايات تحمل الاثارة بأسلوب",
+                    "author": "سليمان العيسى",
                     "image":"girl.jpg",
-                    "description":" يحوي حكايات تحمل الاثارة بأسلوب"
-                   },
-                   {
-                    "Id":5,
+                    "link": "https://glacial-garden-81387.herokuapp.com//storage/7/blob.png",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/12/2يوم-عرفة.pdf"
+                },
+                {
                     "name":"قصص الاطفال",
+                    "title": " يحوي حكايات تحمل الاثارة بأسلوب",
                     "image":"duck1.jpg",
-                    "description":" يحوي حكايات ممتعة تحمل الفائدة "
-                   }
-                  
-                  ]
+                    "author": "أدهم شرقاوي",
+                    "link": "https://glacial-garden-81387.herokuapp.com//storage/7/blob.png",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/12/2يوم-عرفة.pdf"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "برمجة",
+            "books": []
+            
+        },
+        {
+            "id": 3,
+            "name": "روبوتيك",
+            "books": [
+
+            ]
+        },
+        {
+            "id": 3,
+            "name": "حساب ذهني",
+            "books": [
+
+            ]
+        },
+        {
+            "id": 4,
+            "name": "لغات",
+            "books": [
+ 
+            ]
+        }
+    ]
 }

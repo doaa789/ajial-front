@@ -4,16 +4,18 @@
       <div class="new-book">
         <div class="new-story-container">
           <div class="new-img-container"
-          v-for="book in books" 
-          :key="book.id">
+           v-for="book in books" 
+          :key="book.name" >
               <img class="new-story-img"  :src="`/images/${book.image}`" :alt="book.name">
               <div class="new-overlay">
                   <div class="new-text">
                     <h5>اسم الكتاب</h5>
                     <p>{{book.name}}</p>
-                    <h5>لمحة عن الكتاب</h5>
-                    <p>{{book.description}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{book.author}}</p>
                     <button class="new-btn"> تحميل</button>
+                    <button class="new-btn"> اختبار</button>
+
                   </div>
               </div>
       
@@ -29,11 +31,44 @@
 </template>
 
 <script>
-import sourceData from '../../library.json';
 export default{
     data(){
         return{
-            books:sourceData.books,   
+        books:[
+                {
+                    name:"قصص تعتز بها",
+                    image:"fox.jpg",
+                    title: "أسلوب بسيط طفولي ومشوق ",
+                    author: "أحمد الشقيري",
+                    link: "https://www.i-know-python.com/computer-vision-game-using-mediapipe-and-python",
+                    pdf: "https://glacial-garden-81387.herokuapp.com//storage/1/عدالة-السماء.pdf"
+                },
+
+                {
+                    name: "امير المياه",
+                    title: " يحوي حكايات ممتعة تحمل الفائدة  ",
+                    author:"محمد العوضي" ,
+                    image:"water.png",
+                    link: "https://www.bing.com/search?q=%D9%83%D8%AA%D8%A7%D8%A8+%D8%B9%D8%AF%D8%A7%D9%84%D8%A9+%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%A1&cvid=688bf3de57f4414e86c37b82f6563021&aqs=edge..69i57j69i65.5994j0j1&pglt=297&FORM=ANNTA1&PC=DCTS",
+                    pdf: "https://glacial-garden-81387.herokuapp.com//storage/10/يوم-عرفة.pdf"
+                },
+                {
+                    "name":"قصص الاطفال",
+                    "title": " يحوي حكايات تحمل الاثارة بأسلوب",
+                    "image":"duck1.jpg",
+                    "author": "أدهم شرقاوي",
+                    "link": "https://glacial-garden-81387.herokuapp.com//storage/7/blob.png",
+                    "pdf": "https://glacial-garden-81387.herokuapp.com//storage/12/2يوم-عرفة.pdf"
+                },
+                {
+                    name: "ابنة السلطان",
+                    title: "يحوي حكايات تحمل الفائدة والاثارة",
+                    author: "طه حسين",
+                    image:"son1.jpg",
+                    link: "https://www.bing.com/search?q=%D9%83%D8%AA%D8%A7%D8%A8+%D8%B9%D8%AF%D8%A7%D9%84%D8%A9+%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%A1&cvid=688bf3de57f4414e86c37b82f6563021&aqs=edge..69i57j69i65.5994j0j1&pglt=297&FORM=ANNTA1&PC=DCTS",
+                    pdf: "https://glacial-garden-81387.herokuapp.com//storage/11/2يوم-عرفة.pdf"
+                },
+        ]
         };
     },
     methods:{
@@ -74,12 +109,11 @@ export default{
 }
 
 .new-story-container{
-  width: 75%;
-  height: 37%;
+  width: 70%;
+  height: 34%;
   display:flex;
   padding-left: 16%;
-  padding-top: 3%;
-  margin-top: 6%;
+  margin-top: 8%;
 
 }
 .new-one-story-container{
@@ -135,8 +169,8 @@ export default{
   direction: rtl;
   position: absolute;
   height: 130%;
-  top: 68%;
-  left: 40%;
+  top: 78%;
+  left: 35%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -152,9 +186,10 @@ export default{
   margin: 0;
 }
 .new-btn {
-  color: #fff;
-  border: 1px solid #fff;
-  background-color: rgb(19, 198, 191);
+    color: rgb(19, 198, 191);
+  border: 1px solid rgb(19, 198, 191);
+  background-color: #fff;
+
   border-radius: 5px;
   border:none;
   padding: 2px 15px;
@@ -163,9 +198,9 @@ export default{
   font-weight:bold;
 }
 .new-btn:hover {
-  color: rgb(19, 198, 191);
-  border: 1px solid rgb(19, 198, 191);
-  background-color: #fff;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: rgb(19, 198, 191);
 }
 .go-book{
   background-color: rgb(19, 198, 191);

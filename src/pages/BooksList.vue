@@ -10,14 +10,10 @@
         <label class="container-radio" @click="this.searchBook='yesSearch'">البحث عن اسم الكتاب<input type="radio" checked="checked" name="radio">
         <span class="checkmark"></span>
         </label>
-
-        <label class="container-radio" >قصص
-        <input type="radio" name="radio" @click="this.searchBook='noSearch'">
-        <span class="checkmark"></span>
-        </label>
+ 
         
-        <label class="container-radio" v-for="type in types" :key="type.id">{{type}}
-        <input type="radio" name="radio" >
+        <label class="container-radio" v-for="classifier in classifiers" :key="classifier.id"  @click="this.classifierSelect=classifier.name">{{classifier.name}}
+        <input type="radio" name="radio" @click="this.searchBook='noSearch'">
         <span class="checkmark"></span>
         </label>
 
@@ -39,21 +35,22 @@
          <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة اسم الكتاب</p>
         </div>
 
-        <div class="one-story-container" v-if="search"  style="display:flex">
+        <div class="one-story-container" v-if="search">
+        <div style="display:flex" v-for=" classifier in classifiers" :key="classifier.id">
           <div class="img-container"
             v-for="book in filteredBooks" 
-            :key="book.id">
+            :key="book.name">
             <img  style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/${book.image}`" :alt="book.name">
             <div class="overlay">
               <div class="text">
                 <h5>اسم الكتاب</h5>
                 <p>{{book.name}}</p>
-                <h5>لمحة عن الكتاب</h5>
-                <p>{{book.description}}</p>
+                <h5>اسم المؤلف</h5>
+                <p>{{book.author}}</p>
                 <button class="btn"> تحميل</button>
               </div>
             </div>
-
+</div>
           </div>            
         </div>
 
@@ -63,43 +60,44 @@
 
       </div>
 
-      <div class="stories" v-else-if="searchBook==='noSearch'">
-        <div class="routing">الكتب > قصص</div>
+      <div class="stories" v-else-if="searchBook==='noSearch'" >
+        <div class="routing" >الكتب > {{classifierSelect}}</div>
 
-        <div class="story-container" style="margin-top: 5%;">
+        <div class="story-container" v-for=" classifier in classifiers" :key="classifier.id" >
           <div class="img-container"
-          v-for="book in firstbooks" 
-          :key="book.id" style="margin-left: 3%;">
-              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name">
+          v-for="book in classifier.books" 
+          :key="book.name" style="margin-left: 3%;">
+              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
               <div class="overlay">
                   <div class="text">
                     <h5>اسم الكتاب</h5>
                     <p>{{book.name}}</p>
-                    <h5>لمحة عن الكتاب</h5>
-                    <p>{{book.description}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{book.author}}</p>
                     <button class="btn"> تحميل</button>
+                    <button class="btn"> اختبار</button>
                   </div>
               </div>
           </div>   
         </div>
 
-        <div class="story-container" style="min-height: 80%;margin-top: -5%;">
+        <div class="story-container" v-for=" classifier in classifiers" :key="classifier.id" >
           <div class="img-container"
-          v-for="book in secondbooks" 
-          :key="book.id"  style="margin-left: 3%;">
-              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name">
+          v-for="book in classifier.books" 
+          :key="book.name" style="margin-left: 3%;">
+              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
               <div class="overlay">
                   <div class="text">
                     <h5>اسم الكتاب</h5>
                     <p>{{book.name}}</p>
-                    <h5>لمحة عن الكتاب</h5>
-                    <p>{{book.description}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{book.author}}</p>
                     <button class="btn"> تحميل</button>
+                    <button class="btn"> اختبار</button>
                   </div>
               </div>
-          </div> 
-      </div>
-
+          </div>   
+        </div>
     </div>
     </div>
     </div>
@@ -115,9 +113,8 @@ export default {
   data(){
         return{
         types:['لغات','روبوتيك','حساب ذهني','برمجة'],
-        books:sourceData.books,
-        firstbooks:sourceData.firstbooks,
-        secondbooks:sourceData.secondbooks,
+        classifiers:sourceData.data,
+        classifierSelect:null,
         search:'',        
         searchBook:'yesSearch',
         userName:'',
@@ -145,7 +142,7 @@ export default {
     },
     computed:{
       filteredBooks(){
-        return this.books.filter(book => book.name.includes(this.search))
+        return this.classifier.books.filter(book => book.name.includes(this.search))
       }
     }
 }
@@ -232,7 +229,9 @@ span:hover{
   height: 100%;
   width: 100%;
 }
-
+.routing{
+  margin-bottom: 6%;
+}
 .routing,label {
     color:#7d52a0;
     font-size: 15px;
@@ -240,7 +239,7 @@ span:hover{
 
 .story-container{
   width: 100%;
-  max-height: 62%;
+  max-height: 82%;
   display:flex;
 
 }
@@ -251,7 +250,7 @@ span:hover{
 }
 .story-img{
   object-fit: cover;
-  width: 100%;
+  width: 115%;
   border-radius: 5%;
   height: 100%;
 }
@@ -281,7 +280,7 @@ span:hover{
   background: rgba( 255, 255, 255, 0.25 );
   backdrop-filter: blur( 18px );
   overflow: hidden;
-  width: 103%;
+  width: 116%;
   height:0%;
   transition: .5s ease;
 }
@@ -294,8 +293,8 @@ span:hover{
 .text {
   position: absolute;
   height: 100%;
-  top: 58%;
-  left: 42%;
+  top: 52%;
+  left: 40%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -389,4 +388,78 @@ span:hover{
 	border-radius: 50%;
 	background: #7d52a0;
 }
+/*{
+    "books":[
+        {
+            "Id":1,
+            "name":"قصص تعتز بها",
+            "image":"fox.jpg",
+            "description":"أسلوب بسيط طفولي ومشوق ",
+            "url":"https://www.jarir.com/jarir-publication-478136.html"
+           },
+        {
+            "Id":2,
+            "name":"امير المياه",
+            "image":"water.png",
+            "description":" يحوي حكايات ممتعة تحمل الفائدة  "
+           },
+        {
+            "Id":3,
+            "name":"ابنة السلطان",
+            "image":"son1.jpg",
+            "description":" يحوي حكايات تحمل الفائدة والاثارة "
+           },
+        {
+            "Id":4,
+            "name":"قصص للبنات",
+            "image":"girl.jpg",
+            "description":" يحوي حكايات تحمل الاثارة بأسلوب"
+           },
+           {
+            "Id":5,
+            "name":"قصص الاطفال",
+            "image":"duck1.jpg",
+            "description":" يحوي حكايات ممتعة تحمل الفائدة "
+           }
+          
+          ],
+          "firstbooks":[
+            {
+                "Id":1,
+                "name":"قصص تعتز بها",
+                "image":"fox.jpg",
+                "description":"أسلوب بسيط طفولي ومشوق ",
+                "url":"https://www.jarir.com/jarir-publication-478136.html"
+               },
+            {
+                "Id":2,
+                "name":"امير المياه",
+                "image":"water.png",
+                "description":" يحوي حكايات ممتعة تحمل الفائدة  "
+               },
+            {
+                "Id":3,
+                "name":"ابنة السلطان",
+                "image":"son1.jpg",
+                "description":" يحوي حكايات تحمل الفائدة والاثارة "
+               }
+
+              ],
+
+              "secondbooks":[
+                {
+                    "Id":4,
+                    "name":"قصص للبنات",
+                    "image":"girl.jpg",
+                    "description":" يحوي حكايات تحمل الاثارة بأسلوب"
+                   },
+                   {
+                    "Id":5,
+                    "name":"قصص الاطفال",
+                    "image":"duck1.jpg",
+                    "description":" يحوي حكايات ممتعة تحمل الفائدة "
+                   }
+                  
+                  ]
+} */
 </style>
