@@ -10,7 +10,7 @@ export default {
         return api.post('login', params);
     },
     logout(){
-        return api.post('logout');
+        return api.post(' https://glacial-garden-81387.herokuapp.com/api/v1/logout');
     },
     getArticles(){
         return api.get('articles')

@@ -36,13 +36,15 @@ const store=createStore({
                 sessionStorage.user = JSON.stringify(data)
       
               },
+              
               async logout({commit}){
-      
                 await repository.logout();
                 commit('SET_USER', null);
                 sessionStorage.removeItem('user') ;
       
-              }
+              },
+
+
             }
           }
     },
@@ -65,11 +67,12 @@ const store=createStore({
             }, 
         },
         actions:{
-            change(context){
-                setTimeout(function(){
-                    context.commit('change')
-                },2000);
-            } 
+          change(context){
+            setTimeout(function(){
+                context.commit('change')
+            },2000);
+        } 
+
         }
 });
 

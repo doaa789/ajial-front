@@ -58,7 +58,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
+
+
+    data() {
+    return {
+      loading: false,
+      error: false,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      authenticated: 'authenticated'
+    })
+  },
+
+
      methods:{
         logUp(){
                this.$router.push('/signup');
@@ -71,14 +88,16 @@ export default {
 
       try {
         await this.$store.dispatch('logout');
-        await this.$router.push({ name: 'login' })
+        await this.$router.push({ path: '/signin' });
+        this.$store.state.enterd='';
+
       } catch (error) {
         this.error = error;
       } finally {
         this.loading = false;
-        this.$store.state.enterd=''
 
       }
+
     }
     }, 
 }

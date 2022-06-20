@@ -2,7 +2,7 @@
 <teleport to="body">
  <base-dialog open v-if="dialogClose">
   <template v-slot:form @submit.prevent="logIn">   
-    <p class="title">مرحبا بك مجددا</p>
+    <p class="title11">مرحبا بك مجددا</p>
     
     <div class="form-control" :class="{invalid:emailValidity==='invalid'}"> 
       <input  placeholder="بريد المستخدم" type="text" v-model.trim="user.email" @blur="validateEmail"/>
@@ -91,7 +91,7 @@ export default {
 dialog{
   max-width: 50%;
 }
-.title{
+.title11{
     text-align: center;
     font-size: 30px;
     color: #7d52a0;
