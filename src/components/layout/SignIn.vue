@@ -76,11 +76,12 @@ export default {
           this.error=null;
           try{
             await this.$store.dispatch('login',this.user);
-            await this.$router.push({name:"posts"});
+            await this.$router.push({path:"/courses"});
+            this.$store.commit('change');
+
           }
           catch(error) {this.error=error;}
           finally{this.loading=false;}
-           this.$store.commit('change');
            this.dialogClose=false;
         }
     }

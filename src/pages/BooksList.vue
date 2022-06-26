@@ -1,7 +1,7 @@
 <template>
 <teleport to="body">
  <base-dialog open v-if="dialogClose">
-  <template v-slot:form @submit.prevent="submitForm">
+  <template v-slot:form>
     <div class="container">
      <div class="part-right">
       <p class="title">تصنيف الكتب</p>
@@ -29,25 +29,27 @@
         
         <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
           <div class="search-section">
-            <input id="search-name" name="search-name" placeholder="اسم الكتاب" type="text" v-model.trim="userName" @blur="validateName" v-model="search"/>
+            <input id="search-name" name="search-name" placeholder="اسم الكتاب" type="text"  @blur="validateName" v-model="search"/>
 
           </div>
          <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة اسم الكتاب</p>
         </div>
 
         <div class="one-story-container" v-if="search">
-        <div style="display:flex" v-for=" classifier in classifiers" :key="classifier.id">
+        <div style="display:flex">
           <div class="img-container"
             v-for="book in filteredBooks" 
             :key="book.name">
-            <img  style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/${book.image}`" :alt="book.name">
-            <div class="overlay">
-              <div class="text">
+            <img style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/${book.image}`" :alt="book.name">
+            <div class="overlay11">
+              <div class="text11">
                 <h5>اسم الكتاب</h5>
                 <p>{{book.name}}</p>
                 <h5>اسم المؤلف</h5>
                 <p>{{book.author}}</p>
                 <button class="btn"> تحميل</button>
+                <button class="btn"> اختبار</button>
+
               </div>
             </div>
 </div>
@@ -63,9 +65,9 @@
       <div class="stories" v-else-if="searchBook==='noSearch'" >
         <div class="routing" >الكتب > {{classifierSelect}}</div>
 
-        <div class="story-container" v-for=" classifier in classifiers" :key="classifier.id" >
+        <div class="story-container">
           <div class="img-container"
-          v-for="book in classifier.books" 
+          v-for="book in books" 
           :key="book.name" style="margin-left: 3%;">
               <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
               <div class="overlay">
@@ -81,9 +83,9 @@
           </div>   
         </div>
 
-        <div class="story-container" v-for=" classifier in classifiers" :key="classifier.id" >
+        <div class="story-container" >
           <div class="img-container"
-          v-for="book in classifier.books" 
+          v-for="book in books" 
           :key="book.name" style="margin-left: 3%;">
               <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
               <div class="overlay">
@@ -112,8 +114,8 @@ export default {
 
   data(){
         return{
-        types:['لغات','روبوتيك','حساب ذهني','برمجة'],
         classifiers:sourceData.data,
+        books:sourceData.data[0].books,
         classifierSelect:null,
         search:'',        
         searchBook:'yesSearch',
@@ -124,13 +126,7 @@ export default {
         };
     },
      methods:{  
-        submitForm(){
-              console.log('Username: ' +this.userName);
-              this.userName='';
-              console.log('radio buttons: '+this.radio);
-              this.radio=null;
-              this.dialogClose=false;
-        },
+
         validateName(){
           if (this.userName ===''){
             this.userNameValidity='invalid';
@@ -142,8 +138,9 @@ export default {
     },
     computed:{
       filteredBooks(){
-        return this.classifier.books.filter(book => book.name.includes(this.search))
-      }
+        return this.books.filter(book => book.name.includes(this.search))
+      },
+      
     }
 }
 </script>
@@ -271,44 +268,67 @@ span:hover{
   margin-right:30% ;
 }
 
-.overlay {
+.overlay,.overlay11 {
   border-radius: 5%;
   position: absolute;
-  bottom:101%;
   left: 0;
   right: 0;
+  bottom:101%;
+
   background: rgba( 255, 255, 255, 0.25 );
   backdrop-filter: blur( 18px );
   overflow: hidden;
-  width: 116%;
   height:0%;
   transition: .5s ease;
 }
-
+.overlay{
+  width: 116%;
+}
+.overlay11 {
+  width: 103%;
+}
 .img-container:hover .overlay {
   bottom: 0;
   height: 100%;
 }
-
-.text {
+.img-container:hover .overlay11 {
+  bottom: 0;
+  height: 100%;
+}
+.text,.text11 {
   position: absolute;
   height: 100%;
-  top: 52%;
-  left: 40%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
-.text p{
+.text{
+  top: 52%;
+  left: 40%;
+}
+.text11 {
+  top: 56%;
+  left: 45%;
+}
+.text p,.text11 p{
   color: #fff;
-  font-size: 10px;
   margin: 0;
+}
+.text p{
+  font-size: 10px;
+}
+.text11 p{
+  font-size: 12px;
+}
+.text h5,.text11 h5{
+  color: #7d52a0;
+  margin:0;
 }
 .text h5{
   font-size: 12px;
-  color: #7d52a0;
-  margin:0;
+}
+.text11 h5{
+  font-size: 15px;
 }
 .btn {
   background-color: #fff;

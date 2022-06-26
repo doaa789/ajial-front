@@ -2,8 +2,8 @@
 <teleport to="body">
  
  <base-dialog open v-if="dialogClose">
-  <template v-slot:form @submit.prevent="submitForm">   
-    <p class="title">أهلا بك في منصة اجيال</p>
+  <template v-slot:form @submit.prevent="signup">   
+    <p class="title22">أهلا بك في منصة اجيال</p>
     <div class="container">
      <div class="part-right">
     <p class="pragraph">نحن سعيدون جدا باشتراكك معنا,من فضلك أدخل معلوماتك
@@ -34,7 +34,7 @@
     
     </div>
 
-    <base-button class="btn">انشاء حساب</base-button>
+    <base-button class="btn" @click="signup">انشاء حساب</base-button>
     <p class="note">هل أنت مستخدم قديم؟
       <br>بامكانك تسجيل الدخول من 
       <a href="#" @click="logIn">هنا</a></p>
@@ -61,23 +61,35 @@ export default {
         userNameValidity:'pending',
         userEmailValidity:'pending',
         userPassValidity:'pending',
-        dialogClose:true
+        dialogClose:true,
+error:false,
+loading:false,
+        user:{
+          "name": "ffffffff",
+          "email": "sddwd@gmail.co",
+          "password": "hjdyt224bb",
+          "age": 12,
+          "bio": "hthty",
+          "images": "dd.png"
+          }
         };
+
     },
      methods:{
         logIn(){
               this.$router.push('/signin');
             },   
-        submitForm(){
-              console.log('Username: ' +this.userName);
-              this.userName='';
-              console.log('email: ' +this.email);
-              this.email='';
-              console.log('password: ' +this.password);
-              this.password='';
-              console.log('radio buttons: '+this.how);
-              this.how=null;
-              this.dialogClose=false;
+
+          async signup(){
+          this.error=null;
+          try{
+            await this.$store.dispatch('signup',this.user);
+            await this.$router.push({path:"/courses"});
+
+          }
+          catch(error) {this.error=error;}
+          finally{this.loading=false;}
+           this.dialogClose=false;
         },
         validateName(){
           if (this.userName ===''){
@@ -120,7 +132,7 @@ dialog{
 .part-right{
   width: 52%;
 }
-.title{
+.title22{
     text-align: center;
     margin: 1rem 0rem;
     font-size: 30px;
@@ -220,6 +232,17 @@ input[type='radio'] {
 input[type='radio'] + label {
   font-weight: normal;
 }
+        submitForm(){
+              console.log('Username: ' +this.userName);
+              this.userName='';
+              console.log('email: ' +this.email);
+              this.email='';
+              console.log('password: ' +this.password);
+              this.password='';
+              console.log('radio buttons: '+this.how);
+              this.how=null;
+              this.dialogClose=false;
+        },
 */
 
 </style>

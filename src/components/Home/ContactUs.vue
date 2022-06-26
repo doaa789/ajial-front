@@ -1,13 +1,20 @@
 <template>
     <div class="contact-us">
         <div class="up">
-            <h2 class="title-contact">تواصل معنا</h2>
-            <p style="margin:auto;">نحن سعداء جدا بتواصلك معنا ،يمكنك ارسال ما تشاء متى تشاء</p>
+            <h2 class="title-contact">أخبرنا برأيك</h2>
+            <p style="margin:auto;font-size: 17px;margin-top: -1%;">نحن سعداء جدا بتواصلك معنا ،يمكنك ارسال ما تشاء متى تشاء</p>
             <div class="down"></div>
             <div class="div-contact-input">
             <input id="user-name" name="user-name" placeholder="اسم المستخدم" type="text">
-            <input id="email" name="email" placeholder="البريد الالكتروني" type="email" >
-            <textarea id="message" name="message" placeholder="رسالتك" type="text"></textarea>
+            <input placeholder="تقييمك لتجربتك في منصتنا" type="email" >
+            <div style="margin-right:52%;margin-top:-3.5%;margin-bottom:3%;max-height: 5px;position: relative;">
+                    <span id="star" class="fa fa-star"></span>
+                    <span id="star" class="fa fa-star"></span>
+                    <span id="star" class="fa fa-star"></span>
+                    <span id="star" class="fa fa-star" ></span>
+                    <span id="star" class="fa fa-star"></span>
+                </div>
+            <textarea id="message" name="message" placeholder="أخبرنا برأيك بنا" type="text"></textarea>
             </div>
             <button class="send">ارسال</button>
         </div>
@@ -21,7 +28,7 @@
 }
 .contact-us{
   border-top:41px solid rgb(175,58, 164);
-  height: 34.5rem;
+  height: 33.5rem;
   direction: rtl;
 }
 .up{
@@ -76,5 +83,7 @@
   background: rgb(175,58, 164);
   color: #fff;
 }
-
+#star{
+  margin-left: 1%;
+}
 </style>

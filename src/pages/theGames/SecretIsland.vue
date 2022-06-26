@@ -22,11 +22,23 @@
         <span :class="{dotgame:true,activedotgame:slider===3}" @click="slider=3"></span> 
       </div>
             </div>
+            <audio autoplay v-if="slider===1">
+                <source src="/images/newGame/11.mp3" type="audio/mpeg">
+            </audio>
+            <audio autoplay v-if="slider===1">
+                <source src="/images/newGame/note.mp3" type="audio/mpeg">
+            </audio>
             <audio autoplay v-if="slider===2">
                 <source src="/images/newGame/note.mp3" type="audio/mpeg">
             </audio>
-            <audio autoplay v-if="slider==3">
+            <audio autoplay v-if="slider===3">
                 <source src="/images/newGame/note.mp3" type="audio/mpeg">
+            </audio>
+            <audio autoplay v-if="slider===2">
+                <source src="/images/newGame/2.mp3" type="audio/mpeg">
+            </audio>
+            <audio autoplay v-if="slider==3">
+                <source src="/images/newGame/3.mp3" type="audio/mpeg">
             </audio>
         </div> 
         <img  class="btn" src="/images/newGame/button.png" v-if="slider===1" @click="slider=2">
@@ -38,7 +50,7 @@
 
     <div v-if="page===2">
             <audio autoplay >
-                <source src="/images/newGame/friend.mp3" type="audio/mpeg">
+                <source src="/images/newGame/collect.mp3" type="audio/mpeg">
             </audio>
     <img src="/images/newGame/background11.png" style="height:43rem;width:100%">
         <div class="center2">
@@ -70,6 +82,10 @@
     <audio autoplay >
         <source src="/images/newGame/collect.mp3" type="audio/mpeg">
     </audio>
+    <audio autoplay >
+        <source src="/images/newGame/4.mp3" type="audio/mpeg">
+    </audio>
+
 <div>
     <img src="/images/newGame/sea.jpg" style="height:43rem;width:100%">
 </div>
@@ -83,7 +99,7 @@
 
 <div class="container4" v-else-if="page==5">
     <audio autoplay>
-        <source src="/images/newGame/friend.mp3" type="audio/mpeg">
+        <source src="/images/newGame/collect.mp3" type="audio/mpeg">
     </audio>
     <div>
         <img src="/images/newGame/sea.jpg" style="height:43rem;max-width:100%">
@@ -140,6 +156,7 @@
                                 <audio autoplay>
                                         <source src="/images/lose.wav" type="audio/mpeg">
                                 </audio>
+ 
                             </div>
                             <div v-else-if="winner=='player'"  style="color:#fff;direction:rtl;margin-right: 65%;margin-top: 14%;">
                                 <div style="display: flex;margin-top: -11%;" >

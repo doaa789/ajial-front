@@ -1,12 +1,12 @@
 <template>
-        <h2 class="title-div">شهادات نعتز بها </h2>
+        <h2 class="title-div">آراء طلابنا بمنصتنا </h2>
       
       <div class="testimonials">
         <div class="row">
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar7.png"  alt="">
+          <img class="avatar" src="/images/avatar6.png"  alt="">
           <div class="testimonials-div-text">
             <div style="display:flex">
                 <h4 style="margin-bottom:0%">ماهر السعدي</h4>
@@ -18,7 +18,7 @@
                     <span class="fa fa-star"></span>
                 </div>
           </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+          <p>انها منصة رائعة! منذ ان بدأت وقد تغيرت للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكي واهتماماماتي </p>
           </div>
 
         </div>
@@ -37,17 +37,18 @@
                     <span class="fa fa-star"></span>
                 </div>
           </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+                   <p>انها منصة رائعة! منذ ان بدأت وقد تغيرت للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكي واهتماماماتي </p>
+
           </div>
 
         </div>
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar5.png"  alt="">
+          <img class="avatar" src="/images/avatar.png"  alt="">
           <div class="testimonials-div-text">
           <div style="display:flex">
-                <h4 style="margin-bottom:0%">سمير الحمصي</h4>
+                <h4 style="margin-bottom:0%">سميرة الحمصي</h4>
                 <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -56,7 +57,8 @@
                     <span class="fa fa-star"></span>
                 </div>
           </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+                    <p>انها منصة رائعة! منذ ان بدأت وقد تغيرت للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكي واهتماماماتي </p>
+
           </div>
 
         </div>
@@ -79,17 +81,18 @@
                     <span class="fa fa-star"></span>
                 </div>
           </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+                    <p>انها منصة رائعة! منذ ان بدأت وقد تغيرت للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكي واهتماماماتي </p>
+
           </div>
 
         </div>
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar3.png"  alt="">
+          <img class="avatar" src="/images/avatar10.png"  alt="">
           <div class="testimonials-div-text">
           <div style="display:flex">
-                <h4 style="margin-bottom:0%">خالد الرازي</h4>
+                <h4 style="margin-bottom:0%">خالدة الرازي</h4>
                 <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -98,29 +101,13 @@
                     <span class="fa fa-star"></span>
                 </div>
           </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
+                   <p>انها منصة رائعة! منذ ان بدأت وقد تغيرت للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكي واهتماماماتي </p>
+
           </div>
 
         </div>
 
-        <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar4.png"  alt="">
-          <div class="testimonials-div-text">
-            <div style="display:flex">
-                <h4 style="margin-bottom:0%">أحمد الطبل</h4>
-                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked" ></span>
-                    <span class="fa fa-star checked"></span>
-                </div>
-          </div>
-          <p>منذ ان بدأ ابني باستخدام منصة أجيال وقد تغيرت طباعه وتصرفاته للأفضل،حيث لاحظت تغيرا ايجابيا في سلوكه واهتماماماته</p>
-          </div>
-
-        </div>
 
 
         </div>

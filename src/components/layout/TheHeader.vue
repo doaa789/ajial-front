@@ -14,7 +14,7 @@
 
             <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
               <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
-              <button @click="this.$store.state.enterd=''">تسجيل خروج</button>      
+              <button @click="logout">تسجيل خروج</button>      
             </div>
 
         </nav>
@@ -35,7 +35,6 @@
                 <div class="dropdown-content">
                   
                     <li><router-link to="/TheSecretIsland">جزيرة الأسرار</router-link></li>
-                    <li><router-link to="/games">وحش الرياضيات</router-link></li>
                     <li  @click="this.$store.state.tabikha=true;this.$store.state.workTabikha=false"><router-link to="/tabikha">طابقها</router-link></li>
                     
                 </div>
@@ -58,7 +57,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
 
@@ -69,12 +67,6 @@ export default {
       error: false,
     }
   },
-  computed: {
-    ...mapGetters({
-      authenticated: 'authenticated'
-    })
-  },
-
 
      methods:{
         logUp(){
@@ -83,21 +75,16 @@ export default {
         appearProfile(){
           this.$router.push('/MyProfile');
         },
-    async logout() {
-      this.loading = true;
 
-      try {
-        await this.$store.dispatch('logout');
-        await this.$router.push({ path: '/signin' });
-        this.$store.state.enterd='';
-
-      } catch (error) {
-        this.error = error;
-      } finally {
-        this.loading = false;
-
-      }
-
+       async logout() {
+          this.loading = true;
+          try {
+            await this.$store.dispatch('logout');
+            await this.$router.push({ path: '/signin' });
+            this.$store.state.enterd='';
+          } 
+          catch (error) { this.error = error; } 
+          finally { this.loading = false; }
     }
     }, 
 }

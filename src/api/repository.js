@@ -9,8 +9,18 @@ export default {
     login(params){
         return api.post('login', params);
     },
-    logout(){
-        return api.post(' https://glacial-garden-81387.herokuapp.com/api/v1/logout');
+    signUp(params){
+        return api.post('register', params);
+    },
+
+
+
+
+
+
+    
+    logout(params){
+        return api.post('logout',params);
     },
     getArticles(){
         return api.get('articles')

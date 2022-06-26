@@ -6,7 +6,7 @@
       <div v-if="slider==1" class="slider">
           <img src="/images/game.png" alt="safe">
         <div class="safe">
-          <h2>لا قلق بعداليوم</h2>
+          <h2>تسلية وفائدة</h2>
           <p class="safe-p">تقدم منصة أجيال للجيل اليافع<br> حزمة تعليمية ترفيهية آمنة</p>
         </div>
       </div>
@@ -14,7 +14,7 @@
       <div v-if="slider==2" class="slider">
           <img src="/images/media.png" alt="social">
         <div class="safe">
-          <h2>تجربة اجتماعية هادفة</h2>
+          <h2>تواصل اجتماعي هادف</h2>
           <p class="safe-p">مع منصة أجيال يمكنك الاستمتاع بمزايا<br> منصات التواصل الاجتماعي من خلال<br>المتحتوى الهادف الذي نقدمه</p>
         </div>
       </div>
@@ -22,8 +22,8 @@
       <div v-if="slider==3" class="slider">
           <img src="/images/topBooks.png" alt="safe">
         <div class="safe">
-          <h2>العلامة المميزة</h2>
-          <p class="safe-p">اقرأ وتعلم أكثر لتحصل على العلامة المميزة <br>على حسابك الشخصي</p>
+          <h2>تعليم وتحفيز</h2>
+          <p class="safe-p">اقرأ وتعلم أكثر لتحصل على الكأس الذهبي<br>على حسابك الشخصي</p>
         </div>
       </div>
 

@@ -35,7 +35,6 @@
                 <video v-else src="/images/session1.mp4" controls width="550"></video>
 
                      <div class="course-progress">
-                     <img v-if="session==='5'" style="margin-top: -16px;width: 80px;height: 50px;margin-right: -12%;" src="/images/backwin.gif" alt="">                                          
                      <div :class="{videoCircle:true,fullCircle:session>=0}"></div>
                      <div class="dash"></div>
                      <div :class="{videoCircle:true,fullCircle:session>='1'}"></div>
@@ -52,7 +51,6 @@
                         <img style="margin-top: -6px;width: 40px;height: 40px;background-color: #25da75;
                           border-radius:50%;border:3px solid rgb(39, 39, 39);" src="/images/check.png" alt="">                                          
                         <img style="margin-top: -16px;width: 70px;height: 70px;" src="/images/reward1.png" alt="">                                          
-                        <img  style="margin-top: -16px;width: 80px;height: 50px;" src="/images/backwin.gif" alt="">                                          
                      </div>
                      </div>
 
@@ -330,7 +328,6 @@ video{
 .course-progress{
   display:flex;
   margin-top: 7%;
-  margin-right: 12%;
 }
 .videoCircle{
   border-radius:50%;

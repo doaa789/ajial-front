@@ -45,7 +45,7 @@ export default {
 footer img{
       height: 140px;
       width: 140px;
-      margin:2rem 3rem 2rem 1rem;
+      margin:2rem 3rem 2rem 0rem;
 }
 .social-img{
       height: 30px;
@@ -55,6 +55,8 @@ footer img{
       cursor: pointer;
 }
 footer{
+
+  height: 200px;
   background-color:#7d52a0;
   display: flex;
   direction: rtl;
@@ -63,7 +65,7 @@ footer{
 }
 .footer-div{
   width: 17%;
-  padding-top: 1%;
+  padding-top: 2%;
 
 }
 .footer-end p{
