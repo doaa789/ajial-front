@@ -1,77 +1,87 @@
 import { createStore } from 'vuex';
 import coursesModule from './modules/courses/index.js';
-import repository from "../api/repository";
+import auth from './modules/auth.js';
 
 
 const store=createStore({
     modules:{
         courses:coursesModule,
-        auth:{
-            state: () => ({
-              user:sessionStorage.user ? JSON.parse(sessionStorage.getItem('user')) : null
-            }),
-            getters:{
-              user: state => state.user,
-              authenticated: state => state.user !== null,
-            },
-            mutations:{
-              SET_USER(state, user){
-                state.user = user;
-              }
-            },
-            actions:{
-              async login({commit}, user){
-      
-                // await repository.createSession();
-                const {data} = await repository.login(user);
-                commit('SET_USER', data);
-                sessionStorage.user = JSON.stringify(data)
-      
-              },
-              async signup({commit}, user){
-      
-                await repository.createSession();
-                const {data} = await repository.signUp(user);
-                commit('SET_USER', data);
-                sessionStorage.user = JSON.stringify(data)
-      
-              },
-              
-              async logout({commit}){
-                await repository.logout();
-                commit('SET_USER', null);
-                sessionStorage.removeItem('user') ;
-      
-              },
-
-
-            }
-          }
+        auth
     },
     state(){
         return{
-            enterd:'',
             tabikha:false,
+            tabikhaSlider:null,
             whytabikha:false,
             workTabikha:false,
+            productCenter:false,
+            secretIsland:false,
+            classifierSelectCourse:null,
+            goToNewCourse:1,
+            exellentStudentsCourses:[
+                {
+                    trophy:`/images/trophy1.png`,
+                    image:`/images/member6.jpg`,
+                    firstName:'فرح',
+                    secondName:'السيد',
+                    rewardNumber:7
+                },
+                {
+                    trophy:`/images/trophy3.png`,
+                    image:`/images/member7.jpg`,
+                    firstName:'فراس',
+                    secondName:'العابد',
+                    rewardNumber:5
+                    },
+                {
+                    trophy:`/images/trophy2.png`,
+                    image:`/images/member.jpg`,
+                    firstName:'نور',
+                    secondName:'الحماد',
+                    rewardNumber:3
+                    }                 
+            ],
+            exellentStudentsBooks:[
+                {
+                    trophy:`/images/trophy1.png`,
+                    image:`/images/avatar2.png`,
+                    firstName:'حازم',
+                    secondName:'السروجي',
+                    rewardNumber:5
+                },
+                {
+                    trophy:`/images/trophy3.png`,
+                    image:`/images/member5.jpg`,
+                    firstName:'سمر',
+                    secondName:'الأخرس',
+                    rewardNumber:4
+                    },
+                {
+                    trophy:`/images/trophy2.png`,
+                    image:`/images/avatar1.png`,
+                    firstName:'لؤي',
+                    secondName:'الكشك',
+                    rewardNumber:2
+                    },                 
+            ],
+            contact:{
+                name:null,
+                letter:null,
+                image:`/images/avatar10.png`
+            },
+            ratingStar:null,
+            courseReward:1,
+            bookReward:1,
+            
+            
          }
         },
         mutations:{
-            change(state){
-                state.enterd='valid'; 
-            },
-        } ,
+        },
         getters:{
-            finalEnter(state){
-               return state.enterd='valid'; 
-            }, 
         },
         actions:{
-          change(context){
-            setTimeout(function(){
-                context.commit('change')
-            },2000);
-        } 
+
 
         }
 });

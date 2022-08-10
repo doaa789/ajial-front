@@ -1,24 +1,20 @@
 <template>
   <teleport to="body">
      <base-dialog open v-if="dialogClose">
-<template v-slot:form @submit.prevent="submitForm">
+<template v-slot:form >
     <div class="container">
     <div class="part-right">
-      <p class="title">تصنيف الكورسات</p>
+      <p class="title">تصنيف الدورات</p>
       <div class="right-center">
 
-        <label class="container-radio" @click="searching">البحث عن اسم الكورس
+        <label class="container-radio" @click="searching">البحث عن اسم الدورة
         <input type="radio" name="radio">
         <span class="checkmark"></span>
         </label>
 
-        <label class="container-radio" >تكنولوجيا
-        <input type="radio" checked="checked" name="radio" @click="techniqe">
-        <span class="checkmark"></span>
-        </label>
-        
-        <label class="container-radio" v-for="type in types" :key="type.id">{{type}}
-        <input type="radio" name="radio" >
+        <label class="container-radio" v-for="classifier in classifiers"
+         :key="classifier.id">{{classifier.name}}
+        <input type="radio" name="radio" @click="techniqe">
         <span class="checkmark"></span>
         </label>
 
@@ -27,13 +23,13 @@
 
     <div class="part-left">
       <div class="stories" >
-        <div class="routing">الكورسات > تكنولوجيا</div>
+        <div class="routing">الدورات > {{title}}</div>
           
             <div class="container-course" >
               <div class="course-container">
                 <div class="course-right">
-                    <p class="title"> سكراتش للاطفال</p>
-                    <p>سنتعلم في هذه الدورة أساسيات البرمجة، والتي تحتوي الكثير من الأنشطة التطبيقية والعملية باستخدام برنامج سكراتش،ومن خلالها سنساعدك على اكتساب مهارات هامة في عالم البرمجة بطريقة ممتعة وسهلة عن طريق الألعاب</p>
+                    <p class="title"> {{this.firstCourse.name}}</p>
+                    <p>{{this.firstCourse.description}}</p>
                     <p class="title"> الفئة المستهدفة</p>
                      <ul class="who">
                          <li> الأطفال الراغبون حيث (تبدأ أعمارهم من 7-8 سنوات)</li>
@@ -54,7 +50,8 @@
                     
                 </div>
                 <div class="course-left">
-                    <img class="image" src="/images/scratch.png" alt="course">
+                    <img v-if="this.$store.state.goToNewCourse==1" class="image" src="/images/scratch.png" alt="course">
+                    <img v-if="this.$store.state.goToNewCourse==0" class="image" src="/images/arduino.jpg" alt="course">
                      <div class="set-icon">
                          <base-card class="icon-card">
                             <img class="image-icon" src="/images/1.png" alt="certificate" style="min-width:40px;min-height:45px;display: absolute;">    
@@ -62,11 +59,11 @@
                          </base-card>
                          <base-card class="icon-card">
                             <img class="image-icon" src="/images/4.png" alt="author" style="min-width:35px;min-height:35px;display: absolute;margin-top: 6%;">    
-                            <p style="margin-top:-11%;display: relative;">محمد الحلاق</p>
+                            <p style="margin-top:-11%;display: relative;">{{this.firstCourse.teacher_id}}</p>
                          </base-card>
                          <base-card class="icon-card">
                             <img class="image-icon" src="/images/2.png" alt="session" style="min-width:40px;min-height:45px;display: absolute;">    
-                            <p style="margin-top:-21%;display: relative;">10 دروس</p>
+                            <p style="margin-top:-21%;display: relative;">5 دروس</p>
                          </base-card>
                      </div>
                      <base-button class="enter" @click="enterCourse">البدء بالتعلم</base-button>
@@ -84,26 +81,49 @@
 </template>
 
 <script>
-import sourceData from '../../courses.json'
+import repository from '../../api/repository'
+
 export default {
       data(){
           return{
-        types:['لغات','روبوتيك','حساب ذهني','برمجة'],
         radio:null,
-        courses:sourceData.courses,         
+         enroll:{
+        course_id: "1"
+        },
         dialogClose:true,
         courseDetails:'list',
+        classifiers:null,
+        courses:null,
+        title:null,
+        firstCourse:null
           }
       },
+      created () {
+        this.getCourses()
+      },
       methods:{
+        async getCourses () {
+          const {data} = await repository.getCourses();
+          this.classifiers=data.data;            
+          this.title=data.data[0].name;
+              this.courses = data.data[0].courses;
+          if(this.$store.state.goToNewCourse==1){ 
+              this.firstCourse=data.data[0].courses[1];
+          }
+          else if(this.$store.state.goToNewCourse==0){ 
+              this.firstCourse=data.data[0].courses[0];
+          }
+        },
         searching(){
                this.$router.push('/courses')
             },
         techniqe(){
-               this.$router.push('/courses/techniqe')
+               this.$router.push('/courses/courseType1')
             },
         enterCourse(){
-               this.$router.push('/courses/joiningScratch')
+               this.$router.push('/courses/courseType1/courseNum1/joiningCourse1');
+               this.$store.dispatch('postEnrollments',this.enroll);
+               console.log(this.enroll)
         },
         submitForm(){
               console.log('Username: ' +this.userName);

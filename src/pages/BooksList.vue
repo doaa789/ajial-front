@@ -1,13 +1,14 @@
 <template>
 <teleport to="body">
- <base-dialog open v-if="dialogClose">
+ <base-dialog open v-if="dialogClose && $store.getters.authenticated">
   <template v-slot:form>
     <div class="container">
      <div class="part-right">
       <p class="title">تصنيف الكتب</p>
       <div class="right-center">
 
-        <label class="container-radio" @click="this.searchBook='yesSearch'">البحث عن اسم الكتاب<input type="radio" checked="checked" name="radio">
+        <label class="container-radio" @click="this.searchBook='yesSearch'">البحث عن اسم الكتاب
+        <input type="radio" checked="checked" name="radio">
         <span class="checkmark"></span>
         </label>
  
@@ -27,7 +28,7 @@
            <img class="search-img" src="/images/search.png" alt="search">
          </p>
         
-        <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
+        <div class="form-control" :class="{invalid:userNameValidity=='invalid'}">
           <div class="search-section">
             <input id="search-name" name="search-name" placeholder="اسم الكتاب" type="text"  @blur="validateName" v-model="search"/>
 
@@ -39,15 +40,18 @@
         <div style="display:flex">
           <div class="img-container"
             v-for="book in filteredBooks" 
-            :key="book.name">
-            <img style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/${book.image}`" :alt="book.name">
+            :key="book.title">
+            <img style="object-fit: cover;width: 100%;border-radius: 5%;height: 100%;margin-left: 5%;"  :src="`/images/book1.png`" :alt="book.name">
             <div class="overlay11">
               <div class="text11">
                 <h5>اسم الكتاب</h5>
-                <p>{{book.name}}</p>
+                <p>{{book.title}}</p>
                 <h5>اسم المؤلف</h5>
                 <p>{{book.author}}</p>
-                <button class="btn"> تحميل</button>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${book.pdf}`">
+                  قراءة</a>
+                </button>
                 <button class="btn"> اختبار</button>
 
               </div>
@@ -65,70 +69,267 @@
       <div class="stories" v-else-if="searchBook==='noSearch'" >
         <div class="routing" >الكتب > {{classifierSelect}}</div>
 
+
         <div class="story-container">
-          <div class="img-container"
-          v-for="book in books" 
-          :key="book.name" style="margin-left: 3%;">
-              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
+          <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='قصص'" class="story-img"  :src="`/images/${bookRaw0[4]}`">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[0]}`">
+              <img  v-if="this.classifierSelect=='إسلامي'" class="story-img"  :src="`/images/${bookRaw1[5]}`">
               <div class="overlay">
                   <div class="text">
                     <h5>اسم الكتاب</h5>
-                    <p>{{book.name}}</p>
+                    <p v-if="this.classifierSelect=='إسلامي'">{{this.books2[1].title}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[2].title}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[0].title}}</p>
                     <h5>اسم المؤلف</h5>
-                    <p>{{book.author}}</p>
-                    <button class="btn"> تحميل</button>
-                    <button class="btn"> اختبار</button>
+                    <p v-if="this.classifierSelect=='إسلامي'">{{this.books2[1].author}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[0].author}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[0].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books2[1].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
                   </div>
-              </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[1]}`">
+              <img  v-if="this.classifierSelect=='إسلامي'" class="story-img"  :src="`/images/${bookRaw1[4]}`">
+              <img v-if="this.classifierSelect=='قصص'"  class="story-img"  :src="`/images/${bookRaw0[2]}`">
+              <div class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p v-if="this.classifierSelect=='إسلامي'">{{this.books2[0].title}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[4].title}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[1].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p v-if="this.classifierSelect=='إسلامي'">{{this.books2[0].author}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[1].author}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[1].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[1].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[2]}`">
+              <img  v-if="this.classifierSelect=='اسلامي'" class="story-img"  :src="`/images/${bookRaw1[5]}`">
+              <img v-if="this.classifierSelect=='قصص'" class="story-img" :src="`/images/${bookRaw[3]}`">
+              <div v-if="this.classifierSelect=='قصص'|| this.classifierSelect=='تنمية'" class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[2].title}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[2].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[2].author}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[2].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[2].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[3]}`">
+              <img v-if="this.classifierSelect=='قصص'" class="story-img"  :src="`/images/${bookRaw[1]}`">
+              <div v-if="this.classifierSelect=='قصص'|| this.classifierSelect=='تنمية'" class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[3].title}}</p>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[3].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p v-if="this.classifierSelect=='تنمية'">{{this.books1[3].author}}</p>
+                    <p v-if="this.classifierSelect=='قصص'">{{this.books[3].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[3].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+
+              <div  class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='قصص'" class="story-img" :src="`/images/${bookRaw[0]}`" >
+              <div v-if="this.classifierSelect=='قصص'" class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{this.books[4].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{this.books[4].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[4].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div>             
           </div>   
         </div>
 
-        <div class="story-container" >
-          <div class="img-container"
-          v-for="book in books" 
-          :key="book.name" style="margin-left: 3%;">
-              <img class="story-img"  :src="`/images/${book.image}`" :alt="book.name" >
+
+        <div class="story-container">
+          <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[2]}`">
+              <img v-if="this.classifierSelect=='قصص'" class="story-img"  :src="`/images/${bookRaw0[0]}`">
               <div class="overlay">
                   <div class="text">
                     <h5>اسم الكتاب</h5>
-                    <p>{{book.name}}</p>
+                    <p>{{this.books1[2].title}}</p>
                     <h5>اسم المؤلف</h5>
-                    <p>{{book.author}}</p>
-                    <button class="btn"> تحميل</button>
-                    <button class="btn"> اختبار</button>
+                    <p>{{this.books1[2].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[0].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
                   </div>
-              </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[3]}`">
+              <img  v-if="this.classifierSelect=='قصص'" class="story-img"  :src="`/images/${bookRaw[4]}`">
+              <div class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{this.books1[3].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{this.books1[3].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[1].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[0]}`">
+              <img v-if="this.classifierSelect=='قصص'" class="story-img" :src="`/images/${bookRaw0[1]}`">
+              <div class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{this.books1[0].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{this.books1[0].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[2].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img  v-if="this.classifierSelect=='تنمية'" class="story-img"  :src="`/images/${bookRaw1[1]}`">
+              <img  v-if="this.classifierSelect=='قصص'" class="story-img"  :src="`/images/${bookRaw[2]}`">
+              <div class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{this.books1[1].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{this.books1[1].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[3].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div></div>
+
+
+              <div class="img-container" style="margin-left: 3%;">
+              <img v-if="this.classifierSelect=='قصص'" class="story-img" :src="`/images/${bookRaw0[3]}`" >
+              <div v-if="this.classifierSelect=='قصص'" class="overlay">
+                  <div class="text">
+                    <h5>اسم الكتاب</h5>
+                    <p>{{this.books[4].title}}</p>
+                    <h5>اسم المؤلف</h5>
+                    <p>{{this.books[4].author}}</p>
+                <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" :href="`${this.books[4].pdf}`">
+                  قراءة</a>
+                </button>
+                    <button class="btn">
+                  <a style="text-decoration: none;  color: #7d52a0;" href="https://forms.gle/2AWfQysrwQBJV86m7">
+                       اختبار</a></button>
+                  </div>
+              </div>             
           </div>   
         </div>
+
     </div>
     </div>
     </div>
   </template>
  </base-dialog>
+<not-found v-else></not-found>
 </teleport>
 </template>
 
 <script>
-import sourceData from '../library.json'
+import repository from '../api/repository.js';
+import NotFound from './NotFound.vue';
 export default {
-
+  components:{
+    NotFound
+  },
   data(){
         return{
-        classifiers:sourceData.data,
-        books:sourceData.data[0].books,
+        classifiers:null,
+        books:null,
         classifierSelect:null,
         search:'',        
         searchBook:'yesSearch',
+        bookRaw:['son1.jpg','water.png','girl.jpg','fox.jpg','duck1.jpg'],
+        bookRaw0:['book4.jpg','book1.png','book6.jpg','book3.png','book2.png'],
+        bookRaw1:['11.jpg','12.jpg','13.jpg','14.jpg','15.jpg','16.jpg'],
         userName:'',
         radio:null,
         userNameValidity:'pending',
         dialogClose:true
         };
     },
-     methods:{  
+      created () {
+        this.getBooks()
+      },
+      methods:{
+        async getBooks () {
+          const {data} = await repository.getBooks();
+          this.classifiers=data.data;
+          this.books = data.data[0].books;
+          this.books1 = data.data[1].books;
+          this.books2 = data.data[2].books;
+
+        },
 
         validateName(){
-          if (this.userName ===''){
+          if (this.userName==''){
             this.userNameValidity='invalid';
           }
           else{
@@ -138,7 +339,7 @@ export default {
     },
     computed:{
       filteredBooks(){
-        return this.books.filter(book => book.name.includes(this.search))
+        return this.books.filter(book => book.title.includes(this.search))
       },
       
     }
@@ -235,6 +436,7 @@ span:hover{
 }
 
 .story-container{
+    max-height: 3rem;
   width: 100%;
   max-height: 82%;
   display:flex;

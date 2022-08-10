@@ -1,10 +1,11 @@
 import axios from "axios";
+import store from "../store";
 
-let instance = axios.create({
+const instance = axios.create({
     // withCredentials:true,
-    baseURL: 'https://glacial-garden-81387.herokuapp.com/api/v1/',
+    baseURL: 'http://ajyal.neotech-s.com/api/v1/',
     headers: {
-        "Content-type": "application/json",
+        "Accept": "application/json",
         'Access-Control-Allow-Origin' : '*',
         "Access-Control-Allow-Methods":"GET,PUT,POST,DELETE,PATCH,OPTIONS"
     }
@@ -13,6 +14,11 @@ let instance = axios.create({
 instance.interceptors.request.use(request => {
     request.headers.common['Accept'] = 'application/json';
     request.headers.common['Content-Type'] = 'application/json';
+
+    const user = store.getters.user
+    if (user) {
+        request.headers.common['Authorization'] = `Bearer ${user.token}`
+    }
     return request;
 });
 
@@ -22,7 +28,7 @@ instance.interceptors.response.use(
     },
     (error) => {
         if (error.response.status === 401) {
-            sessionStorage.removeItem("user");
+            localStorage.removeItem("user");
             // window.location.reload();
         }
         return Promise.reject(error);

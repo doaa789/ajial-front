@@ -4,28 +4,31 @@
       <div style="display:flex;padding-right:11%;">
       <div style="padding-left:5%;">
       <div class="topStudents" style="padding-left:36%;">
-        <img class="circle" src="/images/member6.jpg" style="background-color:darkgrey">
-        <img class="circle" src="/images/member7.jpg">
-        <img class="circle" src="/images/member.jpg" style="background-color:lightsalmon">
+        <img class="circle" :src="$store.state.exellentStudentsCourses[0].image" style="background-color:darkgrey">
+        <img class="circle" :src="$store.state.exellentStudentsCourses[1].image">
+        <img class="circle" :src="$store.state.exellentStudentsCourses[2].image" style="background-color:lightsalmon">
 
       </div>
       <div class="order" style="padding-left:40%;">
-          <div class="member-paragraph" style="margin-right: 19%;">اسماء العابد<br>المرتبة الأولى</div>
-          <div class="member-paragraph" style="margin-right: 13%;">حسني الأشقر<br>المرتبة الثانية</div>
-          <div class="member-paragraph" style="margin-right: 21%;">نور الحموي<br>المرتبة الثالثة</div>
+          <div class="member-paragraph" style="margin-right: 19%;">المرتبة الأولى<br>{{$store.state.exellentStudentsCourses[0].firstName}} {{$store.state.exellentStudentsCourses[0].secondName}}
+          <br>عددالأوسمة {{$store.state.exellentStudentsCourses[0].rewardNumber}}</div>
+          <div class="member-paragraph" style="margin-right: 16%;">المرتبة الثانية<br>{{$store.state.exellentStudentsCourses[1].firstName}} {{$store.state.exellentStudentsCourses[1].secondName}}
+          <br>عددالأوسمة {{$store.state.exellentStudentsCourses[1].rewardNumber}}</div>
+          <div class="member-paragraph" style="margin-right: 21%;">المرتبة الثالثة<br>{{$store.state.exellentStudentsCourses[2].firstName}} {{$store.state.exellentStudentsCourses[2].secondName}}
+          <br>عددالأوسمة {{$store.state.exellentStudentsCourses[2].rewardNumber}}</div>
 
       </div>
 
         <div style="display:flex;padding-bottom:9%;padding-left:55%">
-      <img class="trophy1" src="/images/trophy1.png" alt="">
-      <img class="trophy3" src="/images/trophy3.png" alt="">
-      <img class="trophy5" src="/images/trophy5.png" alt="">
+      <img class="trophy1" :src="$store.state.exellentStudentsCourses[0].trophy">
+      <img class="trophy3" :src="$store.state.exellentStudentsCourses[1].trophy">
+      <img class="trophy5" :src="$store.state.exellentStudentsCourses[2].trophy">
       </div>
       </div>
 
       <div style="width:40%;">
-          <h2 class="part" style="padding-right:6%;">قسم الكورسات</h2>
-          <img src="/images/top1.png" style="height:32rem;margin-top: -25%;">
+          <h2 class="part" style="padding-right:17%;margin-left:8%;">قسم الدورات</h2>
+          <img src="/images/top1.png" style="height:35rem;margin-top: -25%;">
       </div>
       
       </div>
@@ -33,31 +36,56 @@
       <div style="display:flex;margin-right: 5%;">
       <div style="width:40%;">
           <h2 class="part" style="padding-right:11%;">قسم الكتب</h2>
-          <img src="/images/top1.png" style="height:32rem;margin-top: -25%;">
+          <img src="/images/top1.png" style="height:35rem;margin-top: -25%;">
       </div>
       <div>
       <div class="topStudents" style="padding-left:46%;">
-        <img class="circle" src="/images/avatar.png" style="background-color:darkgrey">
-        <img class="circle" src="/images/member5.jpg">
-        <img class="circle" src="/images/avatar6.png" style="background-color:lightsalmon">
+        <img class="circle" :src="$store.state.exellentStudentsBooks[0].image" style="background-color:darkgrey">
+        <img class="circle" :src="$store.state.exellentStudentsBooks[1].image">
+        <img class="circle" :src="$store.state.exellentStudentsBooks[2].image" style="background-color:peru">
 
       </div>
       <div  class="order" style="padding-left:20%">
-          <div class="member-paragraph" style="margin-right: 12%;">حسناء العابد<br>المرتبة الأولى</div>
-          <div class="member-paragraph" style="margin-right: 3%;">حمدية الأشقر<br>المرتبة الثانية</div>
-          <div class="member-paragraph" style="margin-right: 3%;">نور الحموي<br>المرتبة الثالثة</div>
+          <div class="member-paragraph" style="margin-right: 12%;">المرتبة الأولى<br>{{$store.state.exellentStudentsBooks[0].firstName}} {{$store.state.exellentStudentsBooks[0].secondName}}<br>عدد الأوسمة {{$store.state.exellentStudentsBooks[0].rewardNumber}}</div>
+          <div class="member-paragraph" style="margin-right: 3%;">المرتبة الثانية<br>{{$store.state.exellentStudentsBooks[1].firstName}} {{$store.state.exellentStudentsBooks[1].secondName}}
+          <br>عدد الأوسمة {{$store.state.exellentStudentsBooks[1].rewardNumber}}</div>
+          <div class="member-paragraph" style="margin-right: 3%;">المرتبة الثالثة<br>{{$store.state.exellentStudentsBooks[2].firstName}} {{$store.state.exellentStudentsBooks[2].secondName}}
+          <br>عدد الأوسمة {{$store.state.exellentStudentsBooks[2].rewardNumber}}</div>
 
       </div>
 
         <div style="display:flex;padding-bottom:9%;padding-left:55%">
-      <img class="trophy1" src="/images/trophy1.png" alt="">
-      <img class="trophy3" src="/images/trophy3.png" alt="">
-      <img class="trophy5" src="/images/trophy5.png" alt="">
+      <img class="trophy1" :src="$store.state.exellentStudentsBooks[0].trophy">
+      <img class="trophy3" :src="$store.state.exellentStudentsBooks[1].trophy">
+      <img class="trophy5" :src="$store.state.exellentStudentsBooks[2].trophy">
       </div>
       </div>
       </div>
   </div>
 </template>
+
+<script>
+import repository from '../../api/repository';
+ 
+export default{
+  data(){
+    return{
+      muser:null,
+      users:null
+    }
+  },
+      created () {
+        this.getTopThree()
+      },
+      methods:{
+        async getTopThree () {
+          const {res}= await repository.getTopThree();
+          this.users=res.res[0];
+          this.muser=this.users[0];
+        },
+        }
+}
+</script>
 
 <style>
 .order{

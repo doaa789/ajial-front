@@ -1,6 +1,6 @@
 <template>
 
-
+<div style="background-color:white;height: 60rem;">
     <div class="container" v-if="page===1">
 <img class="title" src="/images/newGame/title.png" alt="title">
         <div class="center">
@@ -54,8 +54,8 @@
             </audio>
     <img src="/images/newGame/background11.png" style="height:43rem;width:100%">
         <div class="center2">
-            <img  class="boyorgirl" src="/images/newGame/girl.png" @click="page=3">
-            <img class="boyorgirl" src="/images/newGame/boy.png" @click="page=3">
+            <img  class="boyorgirl" src="/images/newGame/girl.png" @click="page=3;player='girl'">
+            <img class="boyorgirl" src="/images/newGame/boy.png" @click="page=3;player='boy'">
         </div>
     </div>
 
@@ -71,8 +71,8 @@
     <img src="/images/newGame/background12.png" style="height:43rem;width:100%">
 
         <div class="center2">
-            <img  class="boyorgirl" src="/images/newGame/level2.png" @click="page=4">
-            <img class="boyorgirl" src="/images/newGame/level1.png" @click="page=4">
+            <img  class="boyorgirl" style="cursor:no-drop" src="/images/newGame/level2.png">
+            <img class="boyorgirl" src="/images/newGame/level1.png"  @click="page=4">
         </div>
     </div>
 
@@ -105,10 +105,11 @@
         <img src="/images/newGame/sea.jpg" style="height:43rem;max-width:100%">
     </div>                                
     <audio autoplay>
-            <source src="/images/newGame/beach.mp3" type="audio/mpeg">
+            <source src="/images/newGame/ocean.mp3" type="audio/mpeg">
     </audio>
     <div class="player">
-        <img src="/images/newGame/happygirl.png">
+        <img v-if="player=='girl'" src="/images/newGame/happygirl.png">
+        <img v-if="player=='boy'" style="width:114px;height:130px" src="/images/newGame/happyboy.png">
     </div>
 
 
@@ -161,7 +162,8 @@
                             <div v-else-if="winner=='player'"  style="color:#fff;direction:rtl;margin-right: 65%;margin-top: 14%;">
                                 <div style="display: flex;margin-top: -11%;" >
                                 <img src="/images/newGame/treasure.png" style="width:190px;height:160px;margin-right: -16%;">
-                                <img src="/images/newGame/happygirl.png" style="width:110px;height:110px;margin-right: -8%;margin-top: 1%;">
+                                <img v-if="player=='girl'" src="/images/newGame/happygirl.png" style="width:110px;height:110px;margin-right: -8%;margin-top: 1%;">
+                                <img v-else src="/images/newGame/happyboy.png" style="width:110px;height:110px;margin-right: -8%;margin-top: 1%;">
                                 </div>
                                 <br>مبارك وصولك للكنز يا بطل <br>لقد حققنا مرادنا أخيرا
                                 <audio autoplay>
@@ -202,18 +204,20 @@
                             <div v-if="trueRound" style="color:#fff;direction:rtl;margin-right: 65%;margin-top: 12%;">
                                 <div style="display: flex;margin-top: -1%;" >
                                 <img class="img" :src="image" alt="true">
-                                <img src="/images/newGame/happygirl.png" style="width:110px;height:110px;margin-right: -1%;margin-top: 1%;">
+                                <img class="sadOrHappy" v-if="player=='girl'" src="/images/newGame/happygirl.png">
+                                <img class="sadOrHappy" v-else src="/images/newGame/happyboy.png">
                                 </div>
                                 <br>{{thanks}}
                             </div>
                             <div v-else  style="color:#fff;direction:rtl;margin-right: 65%;margin-top: 12%;">
                                 <div style="display: flex;margin-top: -1%;" >
                                 <img class="img" :src="falseimage" alt="true">
-                                <img src="/images/newGame/sadgirl.png" style="width:110px;height:110px;margin-right: -1%;margin-top: 1%;">
+                                <img class="sadOrHappy" v-if="player=='girl'" src="/images/newGame/sadgirl.png">
+                                <img class="sadOrHappy" v-else src="/images/newGame/sadboy.png">
                                 </div>
                                 <br>{{sorry}}
                             </div>
-                            <img src="/images/newGame/next.png" @click="nextQuestion" style="margin-top:2%;margin-left:12%">
+                            <img src="/images/newGame/next.png" @click="nextQuestion" style="margin-top:2%;margin-left:12%;cursor: pointer;">
 
                         </div>
     </div>
@@ -223,15 +227,17 @@
     </div>
 
 </div>
-
+</div>
 </template>
 
 <script>
+import sourceData from'../../math.json';
 export default {
     data(){
         return{
             page:1,
             slider:1,
+            player:null,
             question:'',
             image:'',
             truesound:'',
@@ -241,7 +247,9 @@ export default {
             sorry:null,
             text :'',
             theAnswer:'',
+            math:sourceData.operations,
             operation:null,
+            op:0,
             forceRound:0,
             trueRound:0,
             falseRound:0,
@@ -273,8 +281,8 @@ export default {
                 this.falsesound="/images/newGame/negative.mp3";
 
 
-                this.operation='45 - 9 =';
-                this.result=36;
+                this.operation=this.math[this.op].expression;
+                this.result=this.math[this.op].result;
             }
             else if(value === 2 ){
                 this.question='السؤال الثاني'
@@ -287,8 +295,8 @@ export default {
                 this.falsesound="/images/newGame/ship.mp3";
 
 
-                this.operation='4 + 13 =';
-                this.result=17;
+                this.operation=this.math[this.op+1].expression;
+                this.result=this.math[this.op+1].result;
             }
             else if(value === 3 ){
                 this.question='السؤال الثالث'
@@ -299,20 +307,20 @@ export default {
                 this.falseimage="/images/dislike1.png";
                 this.truesound="/images/yes.wav";
                 this.falsesound="/images/newGame/shark.mp3";
-                this.operation='8 * 7 =';
-                this.result=56;
+                this.operation=this.math[this.op+2].expression;
+                this.result=this.math[this.op+2].result;
             }
             else if(value === 4 ){
                 this.question='السؤال الرابع'
-                this.text='لقد نصب لك الوحش الماكر فخا عليك ايجاد الحل بسرعة لتنجو منه';
+                this.text='لقد نصب لك القرش الماكر فخا هيا جد الحل بسرعة لتنجو منه';
                 this.thanks='هذا رائع!';
                 this.sorry=' انتبه اجابتك الخاطئة جعلتك تتأخر!';
                 this.image="/images/like2.png";
                 this.falseimage="/images/newGame/shark2.png";
                 this.truesound="/images/newGame/wow.mp3";
                 this.falsesound="/images/newGame/negative.mp3";
-                this.operation='42 % 6 =';
-                this.result=7;
+                this.operation=this.math[this.op+3].expression;
+                this.result=this.math[this.op+3].result;
             }
             else if(value === 5 ){
                 this.question='السؤال الخامس'
@@ -323,8 +331,8 @@ export default {
                 this.falseimage="/images/newGame/crab2.png";
                 this.truesound="/images/yes.wav";
                 this.falsesound="/images/newGame/shark.mp3";
-                this.operation='18 + 6 =';
-                this.result=24;
+                this.operation=this.math[this.op+4].expression;
+                this.result=this.math[this.op+4].result;
                 
             }
             else{
@@ -341,15 +349,22 @@ methods:{
 
             const attackValue=Math.floor(Math.random()*(33-1))+10;
  
-            if (this.theAnswer===this.result){
+            if (this.theAnswer==this.result){
+                if(this.playerHealth<100){
+                    this.playerHealth+=Math.floor(0.3*attackValue);
+                }
             this.trueRound++;
             this.falseRound=null;
             this.monsterHealth-=attackValue;
             }
+
             else{
             this.falseRound++; 
             this.trueRound=null;
             this.playerHealth-=2*attackValue;
+            if(this.playerHealth<0){
+                this.playerHealth=0
+            }
             }
             this.appearQuestion='appearResult';
             this.theAnswer='';
@@ -377,6 +392,7 @@ methods:{
             this.text ='';
             this.theAnswer='';
             this.operation=null;
+            this.op+=5;
             this.forceRound=0;
             this.trueRound=0;
             this.falseRound=0;
@@ -624,7 +640,7 @@ input{
         width: 13%;
         margin-right: 5%;
 position:absolute;
-margin-top: -7%;
+margin-top: -11%;
     }
 
     /* The dots/bullets/indicators */
@@ -654,7 +670,12 @@ margin-top: -7%;
     margin-left: 1.4%;
     margin-top: 0.4%;
 }
-
+.sadOrHappy{
+    width:110px;
+    height:110px;
+    margin-right: -1%;
+    margin-top: 1%;
+}
 
  /*
             <div class="healthbar">

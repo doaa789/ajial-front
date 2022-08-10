@@ -1,24 +1,20 @@
 <template>
   <teleport to="body">
      <base-dialog open v-if="dialogClose">
-<template v-slot:form @submit.prevent="submitForm">
+<template v-slot:form>
     <div class="container">
     <div class="part-right">
-      <p class="title">تصنيف الكورسات</p>
+      <p class="title">تصنيف الدورات</p>
       <div class="right-center">
 
-        <label class="container-radio" @click="searching">البحث عن اسم الكورس
+        <label class="container-radio" @click="searching">البحث عن اسم الدورة
         <input type="radio" name="radio">
         <span class="checkmark"></span>
         </label>
 
-        <label class="container-radio">تكنولوجيا
-        <input type="radio" checked="checked" name="radio" @click="this.searchCourse='noSearch'">
-        <span class="checkmark"></span>
-        </label>
-        
-        <label class="container-radio" v-for="type in types" :key="type.id">{{type}}
-        <input type="radio" name="radio" >
+        <label class="container-radio" v-for="classifier in classifiers"
+         :key="classifier.id" @click="$store.state.classifierSelectCourse=classifier.name">{{classifier.name}}
+        <input type="radio" name="radio">
         <span class="checkmark"></span>
         </label>
 
@@ -27,17 +23,17 @@
 
     <div class="part-left">
       <div class="stories">
-        <div class="routing">الكورسات > تكنولوجيا</div>
-          <div class="container-course" v-if="courseDetails==='list'">
+        <div class="routing">الدورات > {{this.$store.state.classifierSelectCourse}}</div>
+        <div class="container-course" v-if="courseDetails==='list'&& this.$store.state.classifierSelectCourse=='برمجة'">
             <base-card v-for="course in courses" :key="course.id">
                 <div class="part-course-left">
                     <base-card class="icon">
                         <img class="image-icon" src="/images/clock.png" alt="search">
-                        <p>{{course.time}}</p>
+                        <p>{{mycourse.time}}</p>
                     </base-card>
                     <base-card class="icon">
                         <img class="image-icon" src="/images/calender.png" alt="search">
-                        <p>ابتداء من <br>{{course.date}}</p>
+                        <p>ابتداء من <br>{{mycourse.date}}</p>
                     </base-card>
                 </div>
 
@@ -53,6 +49,85 @@
             </div>
 
 
+
+          <div class="container-course" v-if="courseDetails==='list'&& this.$store.state.classifierSelectCourse=='لغات'">
+            <base-card v-for="course in courses1" :key="course.id">
+                <div class="part-course-left">
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/clock.png" alt="search">
+                        <p>{{mycourse.time}}</p>
+                    </base-card>
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/calender.png" alt="search">
+                        <p>ابتداء من <br>{{mycourse.date}}</p>
+                    </base-card>
+                </div>
+
+                <div class="part-course-right">
+                    <p class="title">{{course.name}}</p>
+                    <p>{{course.description}}</p>
+                </div>
+                <div class="bottom">
+                <base-button  class="btn" @click="learnMore">معرفة المزيد</base-button>
+                <base-button class="btn-active" @click="enterCourse">البدء بالتعلم</base-button>
+                </div>
+            </base-card>
+            </div>
+
+
+
+          <div class="container-course" v-if="courseDetails==='list'&& this.$store.state.classifierSelectCourse=='ذكاء'">
+            <base-card v-for="course in courses2" :key="course.id">
+                <div class="part-course-left">
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/clock.png" alt="search">
+                        <p>{{mycourse.time}}</p>
+                    </base-card>
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/calender.png" alt="search">
+                        <p>ابتداء من <br>{{mycourse.date}}</p>
+                    </base-card>
+                </div>
+
+                <div class="part-course-right">
+                    <p class="title">{{course.name}}</p>
+                    <p>{{course.description}}</p>
+                </div>
+                <div class="bottom">
+                <base-button  class="btn" @click="learnMore">معرفة المزيد</base-button>
+                <base-button class="btn-active" @click="enterCourse">البدء بالتعلم</base-button>
+                </div>
+            </base-card>
+            </div>
+
+
+
+          <div class="container-course" v-if="courseDetails==='list'&& this.$store.state.classifierSelectCourse=='تصميم'">
+            <base-card v-for="course in courses3" :key="course.id">
+                <div class="part-course-left">
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/clock.png" alt="search">
+                        <p>{{mycourse.time}}</p>
+                    </base-card>
+                    <base-card class="icon">
+                        <img class="image-icon" src="/images/calender.png" alt="search">
+                        <p>ابتداء من <br>{{mycourse.date}}</p>
+                    </base-card>
+                </div>
+
+                <div class="part-course-right">
+                    <p class="title">{{course.name}}</p>
+                    <p>{{course.description}}</p>
+                </div>
+                <div class="bottom">
+                <base-button  class="btn" @click="learnMore">معرفة المزيد</base-button>
+                <base-button class="btn-active" @click="enterCourse">البدء بالتعلم</base-button>
+                </div>
+            </base-card>
+            </div>
+
+
+
       </div>
 
     </div>
@@ -63,30 +138,62 @@
 </template>
 
 <script>
-import sourceData from '../../courses.json'
+import repository from '../../api/repository'
 export default {
       data(){
           return{
-        types:['لغات','روبوتيك','حساب ذهني','برمجة'],
         search:'',  
-        searchCourse:'yesSearch',
         userName:'',
         radio:null,
         userNameValidity:'pending',
-        courses:sourceData.courses,         
+          userselect:null,
+
+        title:null,
+        title1:null,
+        title2:null,
+        title3:null,
+        classifiers:null,
+        courses:null,
+        courses1:null,
+        courses2:null,
+        courses3:null,
+        courses4:null,
+        mycourse:
+          {
+            time:"15 ساعة",
+            date:"10/12/2022"
+          },
+
         dialogClose:true,
         courseDetails:'list',
           }
       },
+      created () {
+        this.getCourses()
+      },
       methods:{
+        async getCourses () {
+          const {data} = await repository.getCourses();
+          this.classifiers=data.data;
+          this.title=data.data[0].name;
+          this.title1=data.data[1].name;
+          this.title2=data.data[2].name;
+          this.title3=data.data[3].name;
+          this.title4=data.data[4].name;
+          this.courses = data.data[0].courses;
+          this.courses1 = data.data[1].courses;
+          this.courses2 = data.data[2].courses;
+          this.courses3 = data.data[3].courses;
+          this.courses4 = data.data[4].courses;
+        },
         searching(){
                this.$router.push('/courses')
             },
         learnMore(){
-               this.$router.push('/courses/scratch')
+               this.$router.push('/courses/courseType1/courseNum1')
             },
         enterCourse(){
-               this.$router.push('/courses/joiningScratch')
+               this.$router.push('/courses/courseType1/courseNum1/joiningCourse1')
         },
         submitForm(){
               console.log('Username: ' +this.userName);
@@ -356,5 +463,22 @@ li,p{
     width: 100%;
     display: flex;
 }
+/*
+{
+    "courses":[
+        {
+            "Id":1,
+            "name":" سكراتش للاطفال",
+            "description": "يقدم هذا الكورس اساسيات البرمجة بلغة سكراتش للاطفال مما يسهل فهم الانطلاق في عالم البرمجة وتعلم لغات اكثر تعقيدا في المستقبل",
 
+           },
+        {
+            "Id":2,
+            "name":"اردوينو لليافعين",
+            "description":"يقدم هذا الكورس اساسيات الالكترةنيات البسيطة والعمل على لوحة الاردوينو مع القيام ببناء مشاريع بسيطة وممتعة مما يسهل فهم الانطلاق في عالم الالكترونيات وتعلم العمل على لوحات اكثر تعقيدا في المستقبل",
+
+           }
+          
+          ]
+}*/
   </style>

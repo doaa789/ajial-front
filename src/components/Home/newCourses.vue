@@ -1,11 +1,11 @@
 <template>
        <div class="new-courses">
-      <h2 class="title-course">أحدث الكورسات </h2>
+      <h2 class="title-course">أحدث الدورات </h2>
       <div class="row-course">
         <div>
             <h3>البرمجة بلغة سكراتش</h3>
             <p style="padding-bottom:8%;">تحتوي على مجموعة من الأوامر  يتم تركيبها<br> لتسهل يتم تركيبها لتسهل استخدام التكنولوجيا</p>
-            <button class="go-course" style="margin-left:30%;" @click="learnMore">الذهاب للكورس</button>
+            <button class="go-course" style="margin-left:30%;" @click="learnMoreScratch">الذهاب للكورس</button>
         </div>
         <img class="course-row-img" src="/images/scratch2.jpg" alt="scratch" style="margin-left:6%;" >
       </div>
@@ -14,8 +14,8 @@
           <img class="course-row-img" src="/images/arduino3.jpg" alt="arduino"  style="margin-right:6%;">
           <div>
             <h3 style="padding-top:8%;">الاردوينو ببساطة</h3>
-            <p style="padding-bottom:8%;">شهادات نعتز بهاشهادات شهادات شهادات نعتز بها<br> شهادات نعتز بهاشهادات نعتز  شهادات نعتز بها</p>
-            <button class="go-course" style="margin-left:25%;">الذهاب للكورس</button>
+            <p style="padding-bottom:8%;">هو عبارة عن لوحة الدوائر المادية القابلة للبرمجة<br> IDE (بيئة التطوير المتكاملة) والقسم الثاني هو</p>
+            <button class="go-course" style="margin-left:25%;" @click="learnMoreArduino">الذهاب للكورس</button>
           </div>
       </div>
    </div>
@@ -25,8 +25,13 @@
 <script>
 export default{
     methods:{
-        learnMore(){
-      this.$router.push('/courses/scratch')
+        learnMoreScratch(){
+      this.$router.push('/courses/courseType1/courseNum1');
+      this.$store.state.goToNewCourse=1
+    },
+    learnMoreArduino(){
+      this.$router.push('/courses/courseType1/courseNum1');
+      this.$store.state.goToNewCourse=0
     },
     }
 }

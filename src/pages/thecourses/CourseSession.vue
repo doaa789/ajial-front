@@ -1,24 +1,20 @@
 <template>
   <teleport to="body">
      <base-dialog open v-if="dialogClose">
-<template v-slot:form @submit.prevent="submitForm">
+<template v-slot:form>
     <div class="container">
     <div class="part-right">
-      <p class="title">تصنيف الكورسات</p>
+      <p class="title">تصنيف الدورات</p>
       <div class="right-center">
 
-        <label class="container-radio" @click="searching">البحث عن اسم الكورس
+        <label class="container-radio" @click="searching">البحث عن اسم الدورة
         <input type="radio" name="radio">
         <span class="checkmark"></span>
         </label>
 
-        <label class="container-radio" >تكنولوجيا
-        <input type="radio" checked="checked" name="radio" @click="techniqe">
-        <span class="checkmark"></span>
-        </label>
-        
-        <label class="container-radio" v-for="type in types" :key="type.id">{{type}}
-        <input type="radio" name="radio" >
+        <label class="container-radio" v-for="classifier in classifiers"
+         :key="classifier.id" @click="$store.state.classifierSelectCourse=classifier.name">{{classifier.name}}
+        <input type="radio" name="radio" @click="techniqe">
         <span class="checkmark"></span>
         </label>
 
@@ -28,11 +24,14 @@
     <div class="part-left">
 
       <div class="stories">
-        <div class="routing">الكورسات > تكنولوجيا</div>
+        <div class="routing">الدورات > {{title}}</div>
           
             <div class="container-video">
-                <video v-if="session===0" src="/images/computer.mp4" controls width="550"></video>
-                <video v-else src="/images/session1.mp4" controls width="550"></video>
+                <video v-if="session==0" src="/images/session/11.mp4" controls width="550"></video>
+                <video v-else-if="session==1" src="/images/session/15.mp4" controls width="550"></video>
+                <video v-else-if="session==2" src="/images/session/12.mp4" controls width="550"></video>
+                <video v-else-if="session==3" src="/images/session/13.mp4" controls width="550"></video>
+                <video v-else src="/images/session/14.mp4" controls width="550"></video>
 
                      <div class="course-progress">
                      <div :class="{videoCircle:true,fullCircle:session>=0}"></div>
@@ -44,91 +43,81 @@
                      <div :class="{videoCircle:true,fullCircle:session>='3'}"></div>
                      <div class="dash"></div>
                      <div :class="{videoCircle:true,fullCircle:session>='4'}"></div>
-                     <div class="dash"></div>
-                     <div :class="{videoCircle:true,fullCircle:session>='5'}"></div>
-                     <div v-if="session==='5'" class="dash"></div>
-                     <div v-if="session==='5'" style="display:flex;">
+                     <div v-if="session=='4'" class="dash"></div>
+                     <div v-if="session=='4'" style="display:flex;">
                         <img style="margin-top: -6px;width: 40px;height: 40px;background-color: #25da75;
                           border-radius:50%;border:3px solid rgb(39, 39, 39);" src="/images/check.png" alt="">                                          
-                        <img style="margin-top: -16px;width: 70px;height: 70px;" src="/images/reward1.png" alt="">                                          
+                        <img style="margin-top: -16px;width: 70px;height: 70px;" src="/images/reward9.png" alt="">                                          
                      </div>
                      </div>
 
-                <ul class="list-session">
-
-                        <li class="active">
+                      <ul class="list-session">
+                        <li class="activevideo">
                           <img  class="video" src="/images/video1.png" alt="video">
-                             المقدمة: التعريف ببرنامج سكراتش وميزاته
+                             {{lecture0.title}}
                           <img  class="lock" src="/images/open-lock.png" alt="lock">
                         </li>
 
-                         <li :class="{clickSession:true,active:session==='1'}" @click="this.question='1'">
+                         <li :class="{clickSession:true,activevideo:session=='1'}" @click="this.question='0'">
                            <img  class="video" src="/images/video1.png" alt="video">
-                             الدرس الاول: تثبيت برنامج سكراتش
+                             {{lecture1.title}}
                            <img v-if="session===0" class="lock" src="/images/close-lock.png" alt="lock">
                            <img v-else class="lock" src="/images/open-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question==='1'">
+                           <br>
+                           <div class="yes-no" v-if="question==='0'&& session<='0'">
                               <p class="aquestion">هل أتممت الدرس السابق؟</p>
                               <div class="true-false">
-                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='1'">
+                                <img class="false" src="/images/like3.png" alt="true" @click="activeSession">
                                 <img  class="false" src="/images/dislike3.png" alt="false">
                               </div>
                             </div>
                         </li>
 
-                         <li :class="{clickSession:true,active:session==='2'}" @click="this.question='2'">
+                         <li :class="{clickSession:true,activevideo:session=='2'}" @click="this.question='1'">
                            <img  class="video" src="/images/video1.png" alt="video">
-                             الدرس الثاني: شرح واجهة سكراتش وتعليم الرسم
-                           <img  class="lock" src="/images/close-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question==='2'">
+                              {{lecture2.title}}
+                           <img v-if="this.session >'1'"  class="lock" src="/images/open-lock.png" alt="lock">
+                           <img v-else  class="lock" src="/images/close-lock.png" alt="lock">
+                           <br>
+                           <div class="yes-no" v-if="question==='1'&& session<='1'">
                               <p class="aquestion">هل أتممت الدرس السابق؟</p>
                               <div class="true-false">
-                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='2'">
+                                <img class="false" src="/images/like3.png" alt="true" @click="activeSession">
                                 <img  class="false" src="/images/dislike3.png" alt="false">
                               </div>
                             </div>                        
                         </li>
 
-                         <li :class="{clickSession:true,active:session==='3'}" @click="this.question='3'">
+                         <li :class="{clickSession:true,activevideo:session=='3'}" @click="this.question='2'">
                            <img  class="video" src="/images/video1.png" alt="video">
-                             الدرس الثالث:شرح الاحداث في سكراتش والتطبيق عليها
-                        <img  class="lock" src="/images/close-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question==='3'">
+                              {{lecture3.title}}
+                           <img v-if="this.session >'2'"  class="lock" src="/images/open-lock.png" alt="lock">
+                           <img v-else  class="lock" src="/images/close-lock.png" alt="lock">
+                           <br>
+                           <div class="yes-no" v-if="question==='2'&& session<='2'">
                               <p class="aquestion">هل أتممت الدرس السابق؟</p>
                               <div class="true-false">
-                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='3'">
+                                <img class="false" src="/images/like3.png" alt="true" @click="activeSession">
                                 <img  class="false" src="/images/dislike3.png" alt="false">
                               </div>
                             </div>
                         </li>
 
-                         <li :class="{clickSession:true,active:session==='4'}" @click="this.question='4'">
+                         <li :class="{clickSession:true,activevideo:session=='4'}" @click="this.question='3'">
                            <img  class="video" src="/images/video1.png" alt="video">
-                             الدرس الرابع: شرح اوامر الحركة في سكراتش والتطبيق عليها
-                        <img  class="lock" src="/images/close-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question==='4'">
+                              {{lecture4.title}}
+                           <img v-if="this.session >'3'"  class="lock" src="/images/open-lock.png" alt="lock">
+                           <img v-else  class="lock" src="/images/close-lock.png" alt="lock">
+                           <br>
+                           <div class="yes-no" v-if="question==='3'&& session<='3'">
                               <p class="aquestion">هل أتممت الدرس السابق؟</p>
                               <div class="true-false">
-                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='4'">
-                                <img  class="false" src="/images/dislike3.png" alt="false">
-                              </div>
-                            </div>                        
-                        </li>
-
-                         <li :class="{clickSession:true,active:session==='5'}" @click="this.question='5'">
-                           <img  class="video" src="/images/video1.png" alt="video">
-                             الدرس الخامس: شرح اوامر المظاهر في سكراتش والتطبيق عليها
-                        <img  class="lock" src="/images/close-lock.png" alt="lock">
-                           <div class="yes-no" v-if="question==='5'">
-                              <p class="aquestion">هل أتممت الدرس السابق؟</p>
-                              <div class="true-false">
-                                <img class="false" src="/images/like3.png" alt="true" @click="this.session='5'">
+                                <img class="false" src="/images/like3.png" alt="true" @click="activeSession">
                                 <img  class="false" src="/images/dislike3.png" alt="false">
                               </div>
                             </div>                        
                         </li>
                      </ul>
-
             </div>
 
       </div>
@@ -140,26 +129,59 @@
 </template>
 
 <script>
+import repository from '../../api/repository'
+
 export default {
       data(){
           return{
-        types:['لغات','روبوتيك','حساب ذهني','برمجة'],
         searchCourse:'noSearch',
         radio:null,
         dialogClose:true,
         question:false,
-        session:0
+        session:0,
+        classifiers:null,
+        lecture0:null,
+        lectures:null,
+        lecture1:null,
+        lecture2:null,
+        lecture3:null,
+        lecture4:null,
+        lecture5:null,
+        title:null,
           }
       },
+      created () {
+        this.getCourses()
+      },
       methods:{
+        async getCourses () {
+          const {data} = await repository.getCourses();
+          this.classifiers=data.data;
+          this.lectures=data.data[0].courses[2].lectures;
+          this.lecture0=data.data[0].courses[2].lectures[0];
+          this.lecture1=data.data[0].courses[2].lectures[1];
+          this.lecture2=data.data[0].courses[2].lectures[2];
+          this.lecture3=data.data[0].courses[2].lectures[3];
+          this.lecture4=data.data[0].courses[2].lectures[4];
+          this.title=data.data[0].name;
+        },
         searching(){
                this.$router.push('/courses')
             },
         techniqe(){
-               this.$router.push('/courses/techniqe')
+               this.$router.push('/courses/courseType1')
             },
         enterCourse(){
-               this.$router.push('/courses/joiningScratch')
+               this.$router.push('/courses/courseType1/courseNum1/joiningCourse1')
+        },
+        activeSession(){
+          if(this.question==this.session){
+          this.session+=1
+          if(this.session==4){
+            this.$store.state.courseReward+=1 
+          }
+          }
+
         },
         submitForm(){
               this.dialogClose=false;
@@ -203,6 +225,16 @@ export default {
 <li>أولياء الأمور أو المعلمون الراغبون في منح أطفالهم أفضل المهارات البرمجية وأكثرها متعة.</li>
 <li><img  class="true" src="/images/true.png" alt="true">
                              كتابة التعليمات أو الرموز على شكل كود باستخدام لغات البرمجة، وهي من أهم مهارات التعلم.</li>
+
+
+
+                        <li class="active">
+                          <img  class="video" src="/images/video1.png" alt="video">
+                             المقدمة: التعريف ببرنامج سكراتش وميزاته
+                          <img  class="lock" src="/images/open-lock.png" alt="lock">
+                        </li>
+
+                         
 */
 .routing,label {
     color:#7d52a0;
@@ -315,14 +347,15 @@ video{
     margin-right: 6%;
     margin-left: 6%;
     width: 2rem;
-    height: 2rem; 
+    height: 2rem;
+    cursor: pointer; 
 }
 
 .yes-no{
     display: inline-block;
     width: 50%;
 }
-.active{
+.activevideo{
     color: #25da75;
 }
 .course-progress{

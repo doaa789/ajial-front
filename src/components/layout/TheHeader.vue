@@ -6,13 +6,13 @@
           </div>
 
            <ul class="header">
-             <li><router-link to="/tabikha" @click="this.$store.state.whytabikha=true;this.$store.state.workTabikha=false;">لماذا طابقها؟</router-link></li>
-              <li><router-link to="/tabikha/HowToWork" @click="this.$store.state.workTabikha=true;this.$store.state.whytabikha=false;">كيف تعمل؟</router-link></li>
-              <li><router-link to="/tabikha/ProductCenter">مراكز الشراء</router-link></li>
-              <li><router-link to="/" @click="this.$store.state.tabikha=false;this.$store.state.workTabikha=false">عودة الى أجيال</router-link></li>
+             <li><router-link to="/tabikha" @click="this.$store.state.whytabikha=true;this.$store.state.workTabikha=false;this.$store.state.productCenter=false;">لماذا طابقها؟</router-link></li>
+              <li><router-link to="/tabikha/HowToWork" @click="this.$store.state.workTabikha=true;this.$store.state.whytabikha=false;this.$store.state.productCenter=false;">كيف تعمل؟</router-link></li>
+              <li><router-link to="/tabikha/ProductCenter" @click="this.$store.state.productCenter=true;this.$store.state.workTabikha=false;this.$store.state.whytabikha=false;">مراكز الشراء</router-link></li>
+              <li><router-link to="/" @click="this.$store.state.tabikha=false;this.$store.state.whytabikha=false;this.$store.state.workTabikha=false;this.$store.state.productCenter=false;">عودة الى أجيال</router-link></li>
            </ul>
 
-            <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
+            <div v-if="$store.state.auth.user" class="user-enter">
               <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
               <button @click="logout">تسجيل خروج</button>      
             </div>
@@ -28,25 +28,25 @@
 
            <ul class="header">
              <li><router-link to="/">الرئيسية</router-link></li>
-              <li><router-link to="/courses">كورسات</router-link></li>
-              <li><router-link to="/library">كتب</router-link></li>
+              <li><router-link to="/library" style="padding-right:1rem">كتب</router-link></li>
+              <li><router-link to="/courses">دورات</router-link></li>
               <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">العاب</a>
+                <a href="javascript:void(0)" class="dropbtn">ألعاب</a>
                 <div class="dropdown-content">
                   
-                    <li><router-link to="/TheSecretIsland">جزيرة الأسرار</router-link></li>
-                    <li  @click="this.$store.state.tabikha=true;this.$store.state.workTabikha=false"><router-link to="/tabikha">طابقها</router-link></li>
+                    <li @click="this.$store.state.secretIsland=true;"><router-link to="/TheSecretIsland">جزيرة الأسرار</router-link></li>
+                    <li  @click="this.$store.state.tabikha=true;this.$store.state.workTabikha=false;$store.state.tabikhaSlider=1"><router-link to="/tabikha">طابقها</router-link></li>
                     
                 </div>
               </li>
            </ul>
 
-            <div v-if="this.$store.state.enterd==='valid'" class="user-enter">
-              <img src="./Logo/avatar10.png" style="cursor:pointer;" @click="appearProfile"> 
+            <div class="user-enter" v-if="$store.getters.authenticated">
+              <img :src="$store.state.contact.image"  style="cursor:pointer;" @click="appearProfile"> 
               <button @click="logout">تسجيل خروج</button>      
             </div>
 
-             <div v-else class="user-sign-up">
+             <div class="user-sign-up" v-else >
               <img src="./Logo/hello.gif" > 
               <button  @click="logUp">انشاء حساب</button>      
             </div>
@@ -81,7 +81,6 @@ export default {
           try {
             await this.$store.dispatch('logout');
             await this.$router.push({ path: '/signin' });
-            this.$store.state.enterd='';
           } 
           catch (error) { this.error = error; } 
           finally { this.loading = false; }

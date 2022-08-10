@@ -13,18 +13,29 @@ export default {
         return api.post('register', params);
     },
 
-
-
-
-
-
     
     logout(params){
         return api.post('logout',params);
     },
-    getArticles(){
-        return api.get('articles')
+    getCourses(){
+        return api.get('categoriescourses')
     },
+    postEnrollments(params){
+        return api.post('enrollments', params);
+    },
+    getBooks(){
+        return api.get('categoriesbooks')
+    },
+
+    getTopThree(){
+        return api.get('top-ten')
+    },
+
+    getProfile(){
+        return api.get('profile')
+    },
+
+
     getUserArticles(params){
         return api.post('user/articles', params)
     },

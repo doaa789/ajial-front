@@ -1,19 +1,263 @@
 {
-    "courses":[
+    "data": [
         {
-            "Id":1,
-            "name":" سكراتش للاطفال",
-            "description": "يقدم هذا الكورس اساسيات البرمجة بلغة سكراتش للاطفال مما يسهل فهم الانطلاق في عالم البرمجة وتعلم لغات اكثر تعقيدا في المستقبل",
-            "time":"15 ساعة",
-            "date":"10/12/2022"
-           },
+            "id": 2,
+            "name": "تكنولوجيا",
+            "courses": [
+                {
+                    "id": 1,
+                    "name": "سكراتش للاطفال",
+                    "description": "يقدم هذا الكورس اساسيات البرمجة بلغة سكراتش للاطفال مما يسهل فهم الانطلاق في عالم البرمجة وتعلم لغات اكثر تعقيدا في المستقبل",
+                    "teacher_id": "محمد الحلاق",
+                    "enrollments": [
+                        {
+                            "id": 24,
+                            "course_id": 1,
+                            "student_id": 14
+                        },
+                        {
+                            "id": 28,
+                            "course_id": 1,
+                            "student_id": 7
+                        },
+                        {
+                            "id": 31,
+                            "course_id": 1,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 33,
+                            "course_id": 1,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 35,
+                            "course_id": 1,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 36,
+                            "course_id": 1,
+                            "student_id": 11
+                        }
+                    ],
+                    "lectures": [
+                        {
+                            "id": 1,
+                            "title": "الفصل الأول",
+                            "sort": 12,
+                            "description": "يطلق على هذه الدورة اسم دورة تعليم سكراتش للاطفال ، أو تعليم البرمجة للمبتدئين ، أو دورة تعليم scratch ، وفى دروس تعليم سكراتش هذه سوف تتعرف على مبادئ البرمجة التى تجعلك فى اقرب موقت محترفا فيها لنجيب على السؤال الذى يدور بأذهان الكثيرين ( كيف تصبح مبرمج محترف )",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 11},
+                                {"student_id": 12},
+                                {"student_id": 13},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "title": "الفصل الثاني",
+                            "sort": 11,
+                            "description": "يطلق على هذه الدورة اسم دورة تعليم سكراتش للاطفال ، أو تعليم البرمجة للمبتدئين ، أو دورة تعليم scratch ، وفى دروس تعليم سكراتش هذه سوف تتعرف على مبادئ البرمجة التى تجعلك فى اقرب موقت محترفا فيها لنجيب على السؤال الذى يدور بأذهان الكثيرين ( كيف تصبح مبرمج محترف )",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 11},
+                                {"student_id": 12},
+                                {"student_id": 13},
+                                {"student_id": 14},
+                                {"student_id": 7}
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "title": "الفصل الثالث",
+                            "sort": 1,
+                            "description": "يطلق على هذه الدورة اسم دورة تعليم سكراتش للاطفال ، أو تعليم البرمجة للمبتدئين ، أو دورة تعليم scratch ، وفى دروس تعليم سكراتش هذه سوف تتعرف على مبادئ البرمجة التى تجعلك فى اقرب موقت محترفا فيها لنجيب على السؤال الذى يدور بأذهان الكثيرين ( كيف تصبح مبرمج محترف )",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 12},
+                                {"student_id": 13},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11 }
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "title": "الفصل الرابع",
+                            "sort": 3,
+                            "description": "اساسيات البرمجة",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 12},
+                                {"student_id": 13},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        },
+                        {
+                            "id": 5,
+                            "title": "الفصل الخامس",
+                            "sort": 2,
+                            "description": "fghn",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 12},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11 }
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "title": "الفصل السادس",
+                            "sort": 2,
+                            "description": "fghn",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 12},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        },
+                        {
+                            "id": 7,
+                            "title": "الفصل السابع",
+                            "sort": 2,
+                            "description": "شيبلترى اتباغعلتم نلعلتلا تلختم",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 12},
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        },
+                        {
+                            "id": 10,
+                            "title": "الفصل الثامن",
+                            "sort": 12,
+                            "description": "vgjhbnkml,; hkb jlk;l,/. hkjlk/l",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 11}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "اردوينو لليافعين",
+                    "description":"يقدم هذا الكورس اساسيات الالكترةنيات البسيطة والعمل على لوحة الاردوينو مع القيام ببناء مشاريع بسيطة وممتعة مما يسهل فهم الانطلاق في عالم الالكترونيات وتعلم العمل على لوحات اكثر تعقيدا في المستقبل",
+                    "teacher_id": "تالا",
+                    "enrollments": [
+                        {
+                            "id": 7,
+                            "course_id": 2,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 12,
+                            "course_id": 2,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 13,
+                            "course_id": 2,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 21,
+                            "course_id": 2,
+                            "student_id": 12
+                        },
+                        {
+                            "id": 25,
+                            "course_id": 2,
+                            "student_id": 14
+                        }
+                    ],
+                    "lectures": []
+                }
+            ]
+        },
         {
-            "Id":2,
-            "name":"اردوينو لليافعين",
-            "description":"يقدم هذا الكورس اساسيات الالكترةنيات البسيطة والعمل على لوحة الاردوينو مع القيام ببناء مشاريع بسيطة وممتعة مما يسهل فهم الانطلاق في عالم الالكترونيات وتعلم العمل على لوحات اكثر تعقيدا في المستقبل",
-            "time":"20 ساعة",
-            "date":"3/11/2022"
-           }
-          
-          ]
+            "id": 3,
+            "name": "لغات",
+            "courses": [
+                {
+                    "id": 3,
+                    "name": "سكراتش",
+                    "description": "يطلق على هذه الدورة اسم دورة تعليم سكراتش للاطفال ، أو تعليم البرمجة للمبتدئين ، أو دورة تعليم scratch ، وفى دروس تعليم سكراتش هذه سوف تتعرف على مبادئ البرمجة التى تجعلك فى اقرب موقت محترفا فيها لنجيب على السؤال الذى يدور بأذهان الكثيرين ( كيف تصبح مبرمج محترف )",
+                    "teacher_id": "تالا",
+                    "enrollments": [
+                        {
+                            "id": 29,
+                            "course_id": 3,
+                            "student_id": 7
+                        },
+                        {
+                            "id": 32,
+                            "course_id": 3,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 34,
+                            "course_id": 3,
+                            "student_id": 11
+                        },
+                        {
+                            "id": 37,
+                            "course_id": 3,
+                            "student_id": 11
+                        }
+                    ],
+                    "lectures": [
+                        {
+                            "id": 8,
+                            "title": "ygbhjnk",
+                            "sort": 1,
+                            "description": "yvgbh hjkl,n,m  l  ,كمو",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        },
+
+                        {
+                            "id": 9,
+                            "title": "ygbhjnk",
+                            "sort": 1,
+                            "description": "yvgbh hjkl,n,m  l  ,كمو",
+                            "video": "",
+                            "finished_lecture": [
+                                {"student_id": 14},
+                                {"student_id": 7},
+                                {"student_id": 11}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "روبوتيك"
+        },
+        {
+            "id": 5,
+            "name": "حساب ذهني"
+        },
+        {
+            "id": 6,
+            "name": "برمجة"
+        }
+    ]
 }

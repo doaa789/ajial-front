@@ -1,23 +1,20 @@
 <template>
   <teleport to="body">
-     <base-dialog open v-if="dialogClose">
+     <base-dialog open v-if="dialogClose && $store.getters.authenticated">
 <template v-slot:form @submit.prevent="submitForm">
     <div class="container">
     <div class="part-right">
-      <p class="title">تصنيف الكورسات</p>
+      <p class="title">تصنيف الدورات</p>
       <div class="right-center">
 
-        <label class="container-radio" @click="this.searchCourse='yesSearch'">البحث عن اسم الكورس<input type="radio" checked="checked" name="radio">
+        <label class="container-radio" @click="this.searchCourse='yesSearch'">البحث عن اسم الدورة
+        <input type="radio" checked="checked" name="radio">
         <span class="checkmark"></span>
         </label>
 
-        <label class="container-radio" >تكنولوجيا
+        <label class="container-radio" v-for="classifier in classifiers" :key="classifier.id" 
+        @click="$store.state.classifierSelectCourse=classifier.name" >{{classifier.name}}
         <input type="radio" name="radio" @click="techniqe">
-        <span class="checkmark"></span>
-        </label>
-        
-        <label class="container-radio" v-for="type in types" :key="type.id">{{type}}
-        <input type="radio" name="radio" >
         <span class="checkmark"></span>
         </label>
 
@@ -27,14 +24,14 @@
     <div class="part-left">
 
       <div >
-        <p class="note">اختر تصنيف الكورس الذي تريده<br> او ابحث عن اسمه هنا
+        <p class="note">اختر تصنيف الدورة التي تريدها<br> او ابحث عن اسمها هنا
            <img class="search-img" src="/images/search.png" alt="search"></p>
     
         <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
           <div class="search-section">
             <input id="search-name" name="search-name" placeholder="اسم الكورس" type="text" v-model.trim="userName" @blur="validateName" v-model="search"/>
           </div>
-         <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة اسم الكورس</p>
+         <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة اسم الدورة</p>
         </div>
 
           <div class="container-course" v-if="search">
@@ -43,11 +40,11 @@
                 <div class="part-course-left">
                     <base-card class="icon">
                         <img class="image-icon" src="/images/clock.png" alt="search">
-                        <p>{{course.time}}</p>
+                        <p>{{mycourse.time}}</p>
                     </base-card>
                     <base-card class="icon">
                         <img class="image-icon" src="/images/calender.png" alt="search">
-                        <p>ابتداء من <br>{{course.date}}</p>
+                        <p>ابتداء من <br>{{mycourse.date}}</p>
                     </base-card>
                 </div>
 
@@ -73,34 +70,56 @@
     </div>
   </template>
    </base-dialog>
+<not-found v-else></not-found>
 </teleport>
 </template>
 
 <script>
-import sourceData from '../../courses.json';
+import NotFound from '../NotFound.vue';
+import repository from '../../api/repository';
 export default {
+  components:{
+    NotFound
+  },
       data(){
           return{
-        types:['لغات','روبوتيك','حساب ذهني','برمجة'],
         search:'',  
         searchCourse:'yesSearch',
         userName:'',
         radio:null,
         userNameValidity:'pending',
-        courses:sourceData.courses,         
+
+        classifiers:null,
+        courses:null,
+        mycourse:
+          {
+            time:"15 ساعة",
+            date:"10/12/2022"
+          },
+
+
         dialogClose:true,
         courseDetails:'list',
           }
       },
+      created () {
+        this.getCourses()
+      },
       methods:{
+        async getCourses () {
+          const {data} = await repository.getCourses();
+          this.classifiers=data.data;
+          this.courses = data.data[0].courses;
+
+        },
         techniqe(){
-               this.$router.push('/courses/techniqe')
+               this.$router.push('/courses/courseType1')
             },
         learnMore(){
-               this.$router.push('/courses/scratch')
+               this.$router.push('/courses/courseType1/courseNum1')
             },
         enterCourse(){
-               this.$router.push('/courses/joiningScratch')
+               this.$router.push('/courses/courseType1/courseNum1/joiningCourse1')
         },
         submitForm(){
               console.log('Username: ' +this.userName);

@@ -2,39 +2,49 @@
 <teleport to="body">
  
  <base-dialog open v-if="dialogClose">
-  <template v-slot:form @submit.prevent="signup">   
+  <template v-slot:form @submit.prevent="signUp">   
     <p class="title22">أهلا بك في منصة اجيال</p>
     <div class="container">
      <div class="part-right">
     <p class="pragraph">نحن سعيدون جدا باشتراكك معنا,من فضلك أدخل معلوماتك
         <br> لكي تحصل على تجربة استخدام صممت خصيصا لك</p>
       <div class="right-center">
-  <div class="the-input">
-    <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
-      <input id="user-name" name="user-name" placeholder="اسم المستخدم" type="text" v-model.trim="userName" @blur="validateName" />
-      <p v-if="userNameValidity==='invalid'" class="validate">الرجاء التأكد من صحة الاسم</p>
-    </div>
-    
-    <div class="form-control" :class="{invalid:userEmailValidity==='invalid'}">
-      <input id="email" name="email" placeholder="البريد الالكتروني" type="email" v-model.trim="email" @blur="validateEmail"/>
-      <p v-if="userEmailValidity==='invalid'" class="validate">الرجاء التأكد من صحة البريد الالكتروني</p>
-    </div>
-    
-    <div class="form-control" :class="{invalid:userPassValidity==='invalid'}">
-      <input id="password" name="password" placeholder="كلمة المرور" type="password" v-model.trim="password" @blur="validatePassword" />
-      <p v-if="userPassValidity==='invalid'" class="validate">الرجاء التأكد من صحة كلمة المرور</p>
-    </div>
+        <div class="the-input" v-if="!next">
+          <div class="form-control" :class="{invalid:userNameValidity==='invalid'}">
+            <input class="largeInput" id="new-user-name" name="user-name" placeholder="اسم المستخدم" type="email" v-model.trim="user.name" @blur="validateEmail"/>
+          </div>
+          <div class="form-control" :class="{invalid:userEmailValidity==='invalid'}">
+            <input class="largeInput" id="email" name="email" placeholder="بريد المستخدم" type="text" v-model.trim="user.email" @blur="validateName" />
+          </div>
+          <div class="form-control" :class="{invalid:userPassValidity==='invalid'}">
+            <input class="largeInput" id="password" name="password" placeholder="كلمة المرور" type="password" v-model.trim="user.password" @blur="validatePassword" />
+          </div>          
+      </div>
 
-</div>
-
-<div style="display:grid;color:#7d52a0;">
-  <img class="add" src="/images/add6.gif">
-    أدخل صورتك:
-</div>
-    
+      <div v-else>
+        <div class="form-control" style="margin-right: 32%;
+  margin-bottom: 3%;
+        ">
+          <label>أدخل عمرك الحالي :</label>
+            <input class="smallInput" id="age" name="age" type="number" v-model.trim="user.age"/>
+        </div>
+          
+          <div class="form-control" style="margin-right: 12%;">
+          <textarea v-model.trim="user.bio" placeholder="عرفنا عن نفسك قليلا:" ></textarea>
+          </div>
+      </div>
+     <div v-if="!next" style="width:25%">
+      <div style="display:grid;color:#7d52a0;">
+        <img class="add" src="/images/add6.gif">
+          أدخل صورتك:
+      </div>
+      </div>
     </div>
+      <p style="color:red" v-if="error">{{error}}</p>
+      <img class="loading" v-if="loading" src="../../.././public/images/Loader.gif">
 
-    <base-button class="btn" @click="signup">انشاء حساب</base-button>
+    <base-button class="btn" v-if="!next" @click="next=1">التالي</base-button>
+    <base-button class="btn" v-else @click="signUp">انشاء حساب</base-button>
     <p class="note">هل أنت مستخدم قديم؟
       <br>بامكانك تسجيل الدخول من 
       <a href="#" @click="logIn">هنا</a></p>
@@ -57,21 +67,21 @@ export default {
         userName:'',
         email:'',
         password:'',
-        how:null,
+        next:0,
         userNameValidity:'pending',
         userEmailValidity:'pending',
         userPassValidity:'pending',
         dialogClose:true,
-error:false,
-loading:false,
+        error:false,
+        loading:false,
         user:{
-          "name": "ffffffff",
-          "email": "sddwd@gmail.co",
-          "password": "hjdyt224bb",
-          "age": 12,
-          "bio": "hthty",
-          "images": "dd.png"
-          }
+          name: null,
+          email: null,
+          password: null,
+          age: null,
+          bio: null,
+          images:null
+          },
         };
 
     },
@@ -80,10 +90,11 @@ loading:false,
               this.$router.push('/signin');
             },   
 
-          async signup(){
+          async signUp(){
           this.error=null;
           try{
-            await this.$store.dispatch('signup',this.user);
+            this.loading=true;
+            await this.$store.dispatch('signUp',this.user);
             await this.$router.push({path:"/courses"});
 
           }
@@ -146,16 +157,28 @@ dialog{
     font-size: 15px;
     color: #7d52a0;  
     }
-input{
+
+  textarea{
+ border-radius: 28px;
+  width: 110%;
+  height: 80px;
+  margin-right:6%;
+  }
+  .largeInput,.smallInput,textarea{
   border-radius: 18px;
   border:1.5px solid #25da75;
-  width: 90%;
   margin-bottom: 7%;
   font-size: 16px;
   padding:2% 5%;
+  } 
+.largeInput{
+  width: 90%;
+}
+.smallInput{
+  width: 26%;
+  margin-right: 5%;
   }
-
-  input:focus {
+  input:focus,textarea:focus {
   background-color: rgba(37, 218, 117, 0.9);
   outline: none;
 }
@@ -173,6 +196,10 @@ input{
   text-align: center;
   color: #7d52a0;
   font-size: 12px;
+}
+label{
+  color: #7d52a0;
+  min-width:120px;
 }
  a{
    font-size: 17px;
@@ -199,7 +226,11 @@ input{
   margin-right: 25%;
   margin-top: 2%;
 }
-
+.loading{
+  width:200px;
+  height:120px;
+  margin-right:30%;
+}
 /*
 .part-left{
     display:grid;

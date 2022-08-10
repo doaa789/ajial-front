@@ -14,7 +14,7 @@
     </div>
 
       <p style="color:red" v-if="error">{{error}}</p>
-      <p v-if="loading">.....الرجاء الانتظار قليلا</p>
+      <img class="loading" v-if="loading" src="../../.././public/images/Loader.gif">
 
 
     <div>
@@ -75,9 +75,9 @@ export default {
         async login(){
           this.error=null;
           try{
+            this.loading=true;
             await this.$store.dispatch('login',this.user);
-            await this.$router.push({path:"/courses"});
-            this.$store.commit('change');
+            await this.$router.push({path:"/MyProfile"});
 
           }
           catch(error) {this.error=error;}
@@ -135,6 +135,11 @@ input{
 .btn{
   margin-top: 1%;
   margin-right: 37%;
+}
+.loading{
+  width:200px;
+  height:120px;
+  margin-right:35%;
 }
 /*   
 import axios from "axios";

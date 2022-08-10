@@ -6,7 +6,7 @@
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar6.png"  alt="">
+          <img class="avatar" src="/images/avatar2.png"  alt="">
           <div class="testimonials-div-text">
             <div style="display:flex">
                 <h4 style="margin-bottom:0%">ماهر السعدي</h4>
@@ -45,10 +45,10 @@
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar.png"  alt="">
+          <img class="avatar" src="/images/avatar12.png"  alt="">
           <div class="testimonials-div-text">
           <div style="display:flex">
-                <h4 style="margin-bottom:0%">سميرة الحمصي</h4>
+                <h4 style="margin-bottom:0%">زهير النابلسي</h4>
                 <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -89,10 +89,10 @@
 
         <div class="testimonials-div">
 
-          <img class="avatar" src="/images/avatar10.png"  alt="">
+          <img class="avatar" src="/images/avatar11.png"  alt="">
           <div class="testimonials-div-text">
           <div style="display:flex">
-                <h4 style="margin-bottom:0%">خالدة الرازي</h4>
+                <h4 style="margin-bottom:0%">منير الرازي</h4>
                 <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -109,6 +109,30 @@
 
 
 
+        <div class="testimonials-div" v-if="$store.state.contact.name">
+
+          <img class="avatar"  :src="$store.state.contact.image"  alt="">
+          <div class="testimonials-div-text">
+          <div style="display:flex">
+                <h4 style="margin-bottom:0%">{{$store.state.contact.name}}</h4>
+                <div style="margin-right:7%;margin-top:2%;max-height: 5px;;">
+                    <span v-if="$store.state.ratingStar!=null" class="fa fa-star checked"></span>
+                    <span v-else class="fa fa-star"></span>
+                    <span v-if="$store.state.ratingStar>1" class="fa fa-star checked"></span>
+                    <span v-else class="fa fa-star"></span>
+                    <span v-if="$store.state.ratingStar>2" class="fa fa-star checked"></span>
+                    <span v-else class="fa fa-star"></span>
+                    <span v-if="$store.state.ratingStar>3" class="fa fa-star checked"></span>
+                    <span v-else class="fa fa-star"></span>
+                    <span v-if="$store.state.ratingStar>4" class="fa fa-star checked"></span>
+                    <span v-else class="fa fa-star"></span>
+                </div>
+          </div>
+                    <p>{{$store.state.contact.letter}}</p>
+
+          </div>
+
+        </div>
 
         </div>
       </div>

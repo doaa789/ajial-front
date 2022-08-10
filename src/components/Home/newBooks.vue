@@ -13,7 +13,7 @@
                     <p>{{book.name}}</p>
                     <h5>اسم المؤلف</h5>
                     <p>{{book.author}}</p>
-                    <button class="new-btn"> تحميل</button>
+                    <button class="new-btn">قراءة</button>
                     <button class="new-btn"> اختبار</button>
 
                   </div>
